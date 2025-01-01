@@ -139,14 +139,19 @@ $this->extend('master') ?>
                                 echo ' disabled';
                             } ?>>
                             <?php foreach ($groups as $group => $info) : ?>
-                                <option value="<?= $group ?>" <?php if (isset($user) && $user->inGroup($group)) : ?>
-                                    selected <?php endif ?>
+                                <option value="<?= $group ?>"
+                                    <?php
+                                    // Check if the form was submitted and validation failed
+                                    $oldGroups = old('groups', isset($user) ? $user->getGroups() : []);
+                                    if (in_array($group, $oldGroups)) : ?>
+                                        selected
+                                    <?php endif ?>
                                     <?php if (
                                         ! auth()->user()->can('users.manage-admins')
                                         && in_array($group, ['admin','superadmin'])
                                     ) : ?> disabled
                                     <?php endif ?>
-                                    >
+                                >
                                     <?= $info['title'] ?? $group ?>
                                 </option>
                             <?php endforeach ?>
