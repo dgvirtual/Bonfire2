@@ -87,8 +87,7 @@ $this->extend('master') ?>
             <?php if (isset($user) && $user->id !== null) : ?>
             <fieldset>
                 <legend><?= lang('Users.status') ?></legend>
-                <div
-                    x-data="{ isChecked: <?= $user->isBanned() ? 'true' : 'false' ?> }">
+                <div x-data="{ isChecked: <?= $user->isActivated() ? 'true' : 'false' ?> }">
                     <input class="form-check-input" type="checkbox" name="activate" id="activate" value="1"
                         <?php if (! $user->isNotActivated()) : ?>
                             checked disabled
@@ -96,7 +95,9 @@ $this->extend('master') ?>
                     >
                     <label class="form-check-label" for="activate">
                     <?= lang('Users.activated') ?>
-                    </label><br>
+                    </label>
+                </div>
+                <div x-data="{ isChecked: <?= $user->isBanned() ? 'true' : 'false' ?> }">
                     <input type="hidden" name="ban" value="0">
                     <input class="form-check-input" type="checkbox" name="ban" id="ban" value="1" x-model="isChecked"
                         <?php if (
@@ -134,17 +135,13 @@ $this->extend('master') ?>
 
                 <div class="row">
                     <div class="form-group col-12 col-sm-6">
-                        <select name="groups[]" multiple="multiple" class="form-control"
-                            <?php if (! auth()->user()->can('users.edit')) {
-                                echo ' disabled';
-                            } ?>>
-                            <?php foreach ($groups as $group => $info) : ?>
-                                <option value="<?= $group ?>"
-                                    <?php
-                                    // Check if the form was submitted and validation failed
-                                    $oldGroups = old('groups', isset($user) ? $user->getGroups() : []);
-                                    if (in_array($group, $oldGroups)) : ?>
-                                        selected
+                    <?php $oldGroups = old('groups', isset($user) ? $user->getGroups() : []); ?>
+                    <div class="form-group">
+                        <?php foreach ($groups as $group => $info) : ?>
+                            <div class="form-check">
+                                <input type="checkbox" name="groups[]" value="<?= $group ?>" id="group_<?= $group ?>" class="form-check-input"
+                                    <?php if (in_array($group, $oldGroups)) : ?>
+                                        checked
                                     <?php endif ?>
                                     <?php if (
                                         ! auth()->user()->can('users.manage-admins')
@@ -152,10 +149,12 @@ $this->extend('master') ?>
                                     ) : ?> disabled
                                     <?php endif ?>
                                 >
+                                <label for="group_<?= $group ?>" class="form-check-label">
                                     <?= $info['title'] ?? $group ?>
-                                </option>
-                            <?php endforeach ?>
-                        </select>
+                                </label>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
                     </div>
                 </div>
             </fieldset>
