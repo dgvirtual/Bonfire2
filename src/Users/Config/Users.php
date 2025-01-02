@@ -101,6 +101,10 @@ class Users extends BaseConfig
         'last_name' => [
             'label' => 'Last Name', 'rules' => 'permit_empty|string|min_length[3]',
         ],
+        'groups.*' => [
+            'label' => 'Groups',
+            'rules' => 'required',
+        ],
     ];
 
     /**
