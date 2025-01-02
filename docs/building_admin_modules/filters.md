@@ -151,7 +151,7 @@ Here's how this is used for the list of users within Bonfire.
 
     <div class="row">
         <!-- List Users -->
-        <div class="col" id="content-list order-2 order-md-1">
+        <div class="col order-2 order-md-1" id="content-list">
             <?= $this->include('Bonfire\Users\Views\_table') ?>
         </div>
 
