@@ -156,7 +156,7 @@ Here's how this is used for the list of users within Bonfire.
         </div>
 
         <!-- Filters -->
-        <div class="col-auto" x-show="filtered" x-transition.duration.240ms>
+        <div class="col-auto order-1 order-md-2" x-show="filtered" x-transition.duration.240ms>
             <?= view_cell('Bonfire\Libraries\Cells\Filters::renderList 'model=UserFilter target=#content-list') ?>
         </div>
     </div>
