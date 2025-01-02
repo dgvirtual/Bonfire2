@@ -22,8 +22,8 @@ class SearchProvider extends UserModel implements SearchProviderInterface
     public function search(string $term, int $limit = 10, ?array $post = null): array
     {
         // @phpstan-ignore-next-line
-        return $this
-            ->select('users.*')
+        return $this->select('users.*')
+            ->distinct()
             ->join('auth_identities', 'auth_identities.user_id = users.id', 'inner')
             ->like('first_name', $term, 'right', true, true)
             ->orlike('last_name', $term, 'right', true, true)
