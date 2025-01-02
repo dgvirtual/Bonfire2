@@ -22,7 +22,7 @@
 
 		<div class="row">
 			<!-- List Users -->
-			<div class="col" id="content-list">
+			<div class="col" id="content-list order-2 order-md-1">
 				<?= $this->include('Bonfire\Users\Views\_table') ?>
 			</div>
 
