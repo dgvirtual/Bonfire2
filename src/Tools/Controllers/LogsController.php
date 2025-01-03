@@ -71,11 +71,14 @@ class LogsController extends AdminController
 
         $result = $this->logsHandler->paginateLogs($logs, $this->logsLimit);
 
+        $filePagerData = $this->logsHandler->getAdjacentLogFiles($file, $this->logsPath);
+
         return $this->render($this->viewPrefix . 'view_log', [
             'logFile'       => $file . $this->ext,
             'canDelete'     => 1,
             'logContent'    => $result['logs'],
             'pager'         => $result['pager'],
+            'filesPager'    => view($this->viewPrefix . '_pager', $filePagerData),
             'logFilePretty' => app_date(str_replace('log-', '', $file)),
         ]);
     }

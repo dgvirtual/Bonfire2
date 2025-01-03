@@ -54,6 +54,8 @@ $this->section('main') ?>
 
         <?= $pager->links('default', 'bonfire_full') ?>
 
+        <?= $filesPager  ?? '' ?>
+
     </div>
 
     <?php if ($canDelete) : ?>

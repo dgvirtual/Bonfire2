@@ -141,6 +141,57 @@ class Logs
     }
 
     /**
+     * Retrieves the adjacent log files (previous and next) relative to the given log file.
+     *
+     * @param string $currentFile The current log file name.
+     * @param array $logFiles An array of all log file names.
+     * @return array An associative array with 'previous' and 'next' keys containing the respective log file names, or null if not available.
+     */
+    public function getAdjacentLogFiles($currentLogFileBasename, $logsPath): array
+    {
+        // Extract the date from the current log file name
+        preg_match('/log-(\d{4}-\d{2}-\d{2})/', $currentLogFileBasename, $matches);
+        $currentDate = new \DateTime($matches[1]);
+
+        // Retrieve the list of log files in the directory
+        $logFiles = glob($logsPath . '/log-*.log');
+
+        // Extract dates from the filtered log file names
+        $logDates = array_map(static fn ($filePath) => basename($filePath, '.log'), $logFiles);
+
+        // Sort the log files by date
+        usort($logDates, static function ($a, $b) {
+            // Extract the date part of the log file names for comparison
+            $dateA = str_replace('log-', '', $a);
+            $dateB = str_replace('log-', '', $b);
+
+            return strcmp($dateA, $dateB);
+        });
+
+        // Find the index of the current log file
+        $currentLogFileName = basename($currentLogFileBasename, '.log');
+        $currentIndex       = array_search($currentLogFileName, $logDates, true);
+
+        // Determine the next and previous log files based on the index
+        $previousLogFileBasename = $currentIndex > 0 ? $logDates[$currentIndex - 1] : null;
+        $nextLogFileBasename     = $currentIndex < count($logDates) - 1 ? $logDates[$currentIndex + 1] : null;
+
+        return [
+            'prev' => [
+                'link' => $previousLogFileBasename,
+                'label' => substr($previousLogFileBasename ?? '', 4, 10),
+            ],
+           'curr' => [
+                'label' => substr($currentLogFileBasename, 4, 10),
+            ],
+            'next' => [
+                'link' => $nextLogFileBasename,
+                'label' => substr($nextLogFileBasename ?? '', 4, 10),
+            ],
+        ];
+    }
+
+    /**
      * extract the log level from the logLine
      *
      * @param string $logLineStart - The single line that is the start of log line.
