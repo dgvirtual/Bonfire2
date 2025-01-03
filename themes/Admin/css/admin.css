@@ -545,3 +545,13 @@ input[type="checkbox"]:indeterminate {
 [x-cloak] {
     display: none !important;
 }
+
+/*
+ * --------------------------------------------------------------------------
+ * LOGS MODULE
+ * --------------------------------------------------------------------------
+ */
+
+.no-wrap {
+    white-space: nowrap;
+}
