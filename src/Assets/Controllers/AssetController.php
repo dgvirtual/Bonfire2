@@ -48,9 +48,7 @@ class AssetController extends Controller
         $count        = count($fileparts);
         // Must be at least a name and extension
         if ($count < 2) {
-            $this->response->setStatusCode(404);
-
-            return;
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
         $ext = $fileparts[$count - 1];
 
@@ -58,17 +56,20 @@ class AssetController extends Controller
         // a separator defined in user's config
         $separator = config('Assets')->separator ?? '~~';
         $parts     = explode($separator, $filename);
-        $filename = count($parts) === 2 ? $parts[0] . '.' . $ext : $origFilename;
-
-        $folder = config('Assets')->folders[array_shift($segments)];
+        if (count($parts) === 2) {
+            $filename = $parts[0] . '.' . $ext;
+        } else {
+            $filename = $origFilename;
+        }
+        $baseAssetFolders = config('Assets')->folders; // get list of folders with assets
+        $targetBaseAssetFolder = array_shift($segments); // from segments choose the first one as main folder
+        $folder = $baseAssetFolders[$targetBaseAssetFolder] ?? ROOTPATH . '/somer^3andomWhatever'; // point to folder in the website or a non-existent folder within root path
 
         $path = $folder . '/' . implode('/', $segments) . '/' . $filename;
-        if (! is_file($path)) {
-            $this->response->setStatusCode(404);
-
-            return;
+        if (! is_file($path) || empty($folder)) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
 
-        return $this->response->download($origFilename, file_get_contents($path), true);
+        return $this->response->download($origFilename, file_get_contents($path), true)->inline();
     }
 }
