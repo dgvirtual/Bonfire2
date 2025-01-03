@@ -127,12 +127,12 @@ class Logs
         $counts = array_reverse($counts);
 
 
-    // Transform the array into a string with color codes
-    $result = [];
-    foreach ($counts as $level => $count) {
-        $class = self::$levelClasses[$level];
-        $result[] = '<span class="text-' . $class . '">' . $level . '</span>: ' . $count;
-    }
+        // Transform the array into a string with color codes
+        $result = [];
+        foreach ($counts as $level => $count) {
+            $class = self::$levelClasses[$level];
+            $result[] = '<span class="text-' . $class . '">' . $level . '</span>: ' . $count;
+        }
 
         return strtolower(implode(', ', $result));
     }
