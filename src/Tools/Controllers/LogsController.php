@@ -39,11 +39,24 @@ class LogsController extends AdminController
     public function index()
     {
         // Load the Log Files.
-        $logs = get_filenames($this->logsPath);
+        $logs = array_reverse(get_filenames($this->logsPath));
 
         unset($logs[0]);
 
         $result = $this->logsHandler->paginateLogs($logs, $this->logsLimit);
+
+        // Cycle through the $result array and attach the content property
+        for ($i = 0; $i < count($result['logs']); $i++) {
+            if ($result['logs'][$i] === 'index.html') {
+                unset($result['logs'][$i]);
+                continue;
+            }
+            $logFilePath = $this->logsPath . $result['logs'][$i];
+            $result['logs'][$i] = [
+                'filename' => $result['logs'][$i],
+                'content' => $this->logsHandler->countLogLevels($logFilePath),
+            ];
+        }
 
         return $this->render($this->viewPrefix . 'logs', [
             'logs'  => $result['logs'],

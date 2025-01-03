@@ -100,6 +100,44 @@ class Logs
         return $superLog;
     }
 
+    public function countLogLevels($filePath): string
+    {
+        $levels = array_keys(self::$levelClasses);
+
+        // Initialize the counts array
+        $counts = array_fill_keys($levels, 0);
+
+        // Read the file content
+        $fileContent = file_get_contents($filePath);
+
+        if ($fileContent === false) {
+            throw new Exception("Unable to read the file: $filePath");
+        }
+
+        // Count occurrences of each level
+        foreach ($levels as $level) {
+            $counts[$level] = substr_count($fileContent, $level);
+        }
+
+        // Remove entries with value 0
+        $counts = array_filter($counts, function ($value) {
+            return $value > 0;
+        });
+
+        $counts = array_reverse($counts);
+
+
+        // Transform the array into a string with color codes
+        $result = [];
+        foreach ($counts as $level => $count) {
+            $class = self::$levelClasses[$level];
+            $result[] = '<span class="text-' . $class . '">' . $level . '</span>: ' . $count;
+        }
+
+        return strtolower(implode(', ', $result));
+    }
+
+
     /**
      * returns an array of the file contents
      * each element in the array is a line
