@@ -21,35 +21,46 @@ class ComponentRenderer
      */
     public function render(?string $output): string
     {
-        if (empty($output)) {
+        if (empty($output) || strpos($output, '<x-') === false) {
             return $output;
         }
 
         $this->badLog($output, 'RECEIVED FOR RENDERING');
         $output = mb_convert_encoding($output, 'HTML-ENTITIES', 'UTF-8');
 
-        // Ensure the output is properly encoded
+        // Extract <script> tags
+        preg_match_all('/<script\b[^>]*>(.*?)<\/script>/is', $output, $scriptMatches);
+        $scripts = $scriptMatches[0];
+        $outputWithoutScripts = preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', '<!-- script_placeholder -->', $output);
 
         // Load the HTML into DOMDocument
         $dom = new DOMDocument('1.0', 'UTF-8');
-        @$dom->loadHTML($output, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        @$dom->loadHTML($outputWithoutScripts, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
         // Debugging: Log that renderSelfClosingTags is about to be called
-        // $this->logToConsole("Calling renderSelfClosingTags");
+        //$this->logToConsole("Calling renderSelfClosingTags");
 
         // Process self-closing tags
         $this->renderSelfClosingTags($dom);
 
         // Debugging: Log that renderPairedTags is about to be called
-        // $this->logToConsole("Calling renderPairedTags");
+        //$this->logToConsole("Calling renderPairedTags");
 
         // Process paired tags
         $this->renderPairedTags($dom);
 
         // Return the modified HTML
         $result = $dom->saveHTML();
+
+        // Reinsert <script> tags
+        foreach ($scripts as $script) {
+            $result = preg_replace('/<!-- script_placeholder -->/', $script, $result, 1);
+        }
+
+        // Decode HTML entities to preserve original characters
         $result = html_entity_decode($result, ENT_QUOTES | ENT_HTML5, 'UTF-8');
-        $this->badLog($result, 'RETURNED BY RENDER AFTER DECODING');
+
+        $this->badLog($result, 'RETURNED BY RENDER');
         return $result;
     }
 
@@ -76,8 +87,6 @@ class ComponentRenderer
             $replacement = $component instanceof Component
                 ? $component->withView($view)->withData($attributes)->render()
                 : $this->renderView($view, $attributes);
-
-            $this->badLog($replacement, 'GENERATED REPLACEMENT');
 
             // Debugging: Output the replacement content
             // $this->logToConsole("Replacement content for self-closing tag: " . $replacement);
@@ -106,8 +115,6 @@ class ComponentRenderer
             $node->parentNode->replaceChild($fragment, $node);
         }
     }
-
-
 
     /**
      * Finds and renders paired tags, i.e. <x-foo>...</x-foo>
@@ -258,7 +265,7 @@ class ComponentRenderer
 
     private function badLog(string $content, string $header): void
     {
-        //return;
+        return;
         echo PHP_EOL . '<pre>' . PHP_EOL . PHP_EOL . '=============== ' . $header .  ':  ============</pre>' . PHP_EOL;
         echo $content;
         echo '<pre>' . PHP_EOL . PHP_EOL . '</pre>' . PHP_EOL;
