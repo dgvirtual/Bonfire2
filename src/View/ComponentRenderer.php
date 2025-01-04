@@ -28,6 +28,9 @@ class ComponentRenderer
         $this->badLog($output, 'RECEIVED FOR RENDERING');
         $output = mb_convert_encoding($output, 'HTML-ENTITIES', 'UTF-8');
 
+        // Encode Alpine.js attributes to preserve them
+        $output = $this->encodeAlpineAttributes($output);
+
         // Extract <script> tags
         preg_match_all('/<script\b[^>]*>(.*?)<\/script>/is', $output, $scriptMatches);
         $scripts = $scriptMatches[0];
@@ -59,6 +62,9 @@ class ComponentRenderer
 
         // Decode HTML entities to preserve original characters
         $result = html_entity_decode($result, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+        // Decode Alpine.js attributes
+        $result = $this->decodeAlpineAttributes($result);
 
         $this->badLog($result, 'RETURNED BY RENDER');
         return $result;
@@ -270,5 +276,23 @@ class ComponentRenderer
         echo $content;
         echo '<pre>' . PHP_EOL . PHP_EOL . '</pre>' . PHP_EOL;
     }
+    /**
+     * Encodes Alpine.js attributes to preserve them during DOMDocument processing.
+     */
+    private function encodeAlpineAttributes(string $html): string
+    {
+        return preg_replace_callback('/(@[a-zA-Z0-9\-:]+)="([^"]*)"/', function ($matches) {
+            return 'data-alpine-' . substr($matches[1], 1) . '="' . htmlspecialchars($matches[2], ENT_QUOTES | ENT_HTML5, 'UTF-8') . '"';
+        }, $html);
+    }
 
+    /**
+     * Decodes Alpine.js attributes after DOMDocument processing.
+     */
+    private function decodeAlpineAttributes(string $html): string
+    {
+        return preg_replace_callback('/data-alpine-([a-zA-Z0-9\-:]+)="([^"]*)"/', function ($matches) {
+            return '@' . $matches[1] . '="' . htmlspecialchars_decode($matches[2], ENT_QUOTES) . '"';
+        }, $html);
+    }
 }
