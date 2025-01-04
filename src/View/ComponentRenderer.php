@@ -1,14 +1,5 @@
 <?php
 
-/**
- * This file is part of Bonfire.
- *
- * (c) Lonnie Ezell <lonnieje@gmail.com>
- *
- * For the full copyright and license information, please view
- * the LICENSE file that was distributed with this source code.
- */
-
 namespace Bonfire\View;
 
 use DOMDocument;
@@ -20,7 +11,6 @@ class ComponentRenderer
     public function __construct()
     {
         helper('inflector');
-        ini_set('pcre.backtrack_limit', '-1');
     }
 
     /**
@@ -35,12 +25,21 @@ class ComponentRenderer
             return $output;
         }
 
+        // Ensure the output is properly encoded
+        $output = mb_convert_encoding($output, 'HTML-ENTITIES', 'UTF-8');
+
         // Load the HTML into DOMDocument
-        $dom = new DOMDocument();
+        $dom = new DOMDocument('1.0', 'UTF-8');
         @$dom->loadHTML($output, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        // Debugging: Log that renderSelfClosingTags is about to be called
+        $this->logToConsole("Calling renderSelfClosingTags");
 
         // Process self-closing tags
         $this->renderSelfClosingTags($dom);
+
+        // Debugging: Log that renderPairedTags is about to be called
+        $this->logToConsole("Calling renderPairedTags");
 
         // Process paired tags
         $this->renderPairedTags($dom);
@@ -55,20 +54,48 @@ class ComponentRenderer
     private function renderSelfClosingTags(DOMDocument $dom): void
     {
         $xpath = new DOMXPath($dom);
-        $nodes = $xpath->query('//x-*');
+        $nodes = $xpath->query('//*[starts-with(local-name(), "x-") and not(node())]');
+
+        // Debugging: Output the number of nodes found
+        $this->logToConsole("Self-closing tags found: " . $nodes->length);
 
         foreach ($nodes as $node) {
             $name = $node->nodeName;
+            $this->logToConsole("Processing self-closing tag: " . $name);
+
             $view = $this->locateView(substr($name, 2));
             $attributes = $this->parseAttributes($node);
+            $attributes['slot'] = ''; // Ensure slot is defined for self-closing tags
             $component = $this->factory(substr($name, 2), $view);
 
             $replacement = $component instanceof Component
-                ? $component->withView($view)->render()
+                ? $component->withView($view)->withData($attributes)->render()
                 : $this->renderView($view, $attributes);
 
+            // Debugging: Output the replacement content
+            $this->logToConsole("Replacement content for self-closing tag: " . $replacement);
+
+            // Ensure well-formed XML
+            $replacement = $this->ensureWellFormedXML($replacement);
+
+            // Create a new DOMDocument to parse the replacement content
+            $replacementDom = new DOMDocument();
+            @$replacementDom->loadHTML('<?xml encoding="UTF-8">' . $replacement, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+            // Check if the body element exists
+            $body = $replacementDom->getElementsByTagName('body')->item(0);
+            if ($body === null) {
+                $this->logToConsole("Error: Body element not found in replacement content.");
+                continue;
+            }
+
+            // Import the replacement content into the original DOMDocument
             $fragment = $dom->createDocumentFragment();
-            $fragment->appendXML($replacement);
+            foreach ($body->childNodes as $child) {
+                $fragment->appendChild($dom->importNode($child, true));
+            }
+
+            // Replace the original node with the replacement content
             $node->parentNode->replaceChild($fragment, $node);
         }
     }
@@ -79,21 +106,38 @@ class ComponentRenderer
     private function renderPairedTags(DOMDocument $dom): void
     {
         $xpath = new DOMXPath($dom);
-        $nodes = $xpath->query('//x-*');
+        $nodes = $xpath->query('//*[starts-with(local-name(), "x-") and node()]');
+
+        // Debugging: Output the number of nodes found
+        $this->logToConsole("Paired tags found: " . $nodes->length);
 
         foreach ($nodes as $node) {
             $name = $node->nodeName;
+            $this->logToConsole("Processing paired tag: " . $name);
+
             $view = $this->locateView(substr($name, 2));
             $attributes = $this->parseAttributes($node);
-            $attributes['slot'] = $dom->saveHTML($node->childNodes);
+
+            // Fix for childNodes issue
+            $attributes['slot'] = '';
+            foreach ($node->childNodes as $child) {
+                $attributes['slot'] .= $dom->saveHTML($child);
+            }
+
             $component = $this->factory(substr($name, 2), $view);
 
             $replacement = $component instanceof Component
                 ? $component->withView($view)->withData($attributes)->render()
                 : $this->renderView($view, $attributes);
 
+            // Debugging: Output the replacement content
+            $this->logToConsole("Replacement content for paired tag: " . $replacement);
+
+            // Ensure well-formed XML
+            $replacement = $this->ensureWellFormedXML($replacement);
+
             $fragment = $dom->createDocumentFragment();
-            $fragment->appendXML($replacement);
+            @$fragment->appendXML($replacement);
             $node->parentNode->replaceChild($fragment, $node);
         }
     }
@@ -182,5 +226,24 @@ class ComponentRenderer
 
         throw new RuntimeException('View not found for component: ' . $name);
         // @todo look in all normal namespaces
+    }
+
+    /**
+     * Ensures that the given XML string is well-formed.
+     */
+    private function ensureWellFormedXML(string $xml): string
+    {
+        // Load the string into a DOMDocument to ensure it's well-formed
+        $dom = new DOMDocument();
+        @$dom->loadHTML('<?xml encoding="UTF-8">' . $xml, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        return $dom->saveXML($dom->documentElement);
+    }
+
+    /**
+     * Logs a message to the JavaScript console.
+     */
+    private function logToConsole(string $message): void
+    {
+        echo "<script>console.log(" . json_encode($message) . ");</script>";
     }
 }
