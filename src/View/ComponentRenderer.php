@@ -55,50 +55,52 @@ class ComponentRenderer
     {
         $xpath = new DOMXPath($dom);
         $nodes = $xpath->query('//*[starts-with(local-name(), "x-") and not(node())]');
-
+    
         // Debugging: Output the number of nodes found
         $this->logToConsole("Self-closing tags found: " . $nodes->length);
-
+    
         foreach ($nodes as $node) {
             $name = $node->nodeName;
             $this->logToConsole("Processing self-closing tag: " . $name);
-
+    
             $view = $this->locateView(substr($name, 2));
             $attributes = $this->parseAttributes($node);
             $attributes['slot'] = ''; // Ensure slot is defined for self-closing tags
             $component = $this->factory(substr($name, 2), $view);
-
+    
             $replacement = $component instanceof Component
                 ? $component->withView($view)->withData($attributes)->render()
                 : $this->renderView($view, $attributes);
-
+    
             // Debugging: Output the replacement content
             $this->logToConsole("Replacement content for self-closing tag: " . $replacement);
-
-            // Ensure well-formed XML
-            $replacement = $this->ensureWellFormedXML($replacement);
-
+    
             // Create a new DOMDocument to parse the replacement content
             $replacementDom = new DOMDocument();
-            @$replacementDom->loadHTML('<?xml encoding="UTF-8">' . $replacement, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
+            @$replacementDom->loadHTML('<?xml encoding="UTF-8"><body>' . $replacement . '</body>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+    
             // Check if the body element exists
             $body = $replacementDom->getElementsByTagName('body')->item(0);
             if ($body === null) {
                 $this->logToConsole("Error: Body element not found in replacement content.");
                 continue;
             }
-
+    
+            // Debugging: Output the body content
+            $this->logToConsole("Body content: " . $replacementDom->saveHTML($body));
+    
             // Import the replacement content into the original DOMDocument
             $fragment = $dom->createDocumentFragment();
             foreach ($body->childNodes as $child) {
                 $fragment->appendChild($dom->importNode($child, true));
             }
-
+    
             // Replace the original node with the replacement content
             $node->parentNode->replaceChild($fragment, $node);
         }
     }
+    
+
 
     /**
      * Finds and renders paired tags, i.e. <x-foo>...</x-foo>
