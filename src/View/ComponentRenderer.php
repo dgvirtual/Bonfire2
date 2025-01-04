@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * This file is part of Bonfire.
+ *
+ * (c) Lonnie Ezell <lonnieje@gmail.com>
+ * (c) Donatas Glodenis <dg@lapas.info>
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 namespace Bonfire\View;
 
 use DOMDocument;
@@ -25,7 +35,6 @@ class ComponentRenderer
             return $output;
         }
 
-        $this->badLog($output, 'RECEIVED FOR RENDERING');
         $output = mb_convert_encoding($output, 'HTML-ENTITIES', 'UTF-8');
 
         // Encode Alpine.js attributes to preserve them
@@ -40,19 +49,13 @@ class ComponentRenderer
         $dom = new DOMDocument('1.0', 'UTF-8');
         @$dom->loadHTML($outputWithoutScripts, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
-        // Debugging: Log that renderSelfClosingTags is about to be called
-        //$this->logToConsole("Calling renderSelfClosingTags");
-
-        // Process self-closing tags
+        service('timer')->start('self-closing');
         $this->renderSelfClosingTags($dom);
-
-        // Debugging: Log that renderPairedTags is about to be called
-        //$this->logToConsole("Calling renderPairedTags");
-
-        // Process paired tags
+        service('timer')->stop('self-closing');
+        service('timer')->start('paired-tags');
         $this->renderPairedTags($dom);
+        service('timer')->stop('paired-tags');
 
-        // Return the modified HTML
         $result = $dom->saveHTML();
 
         // Reinsert <script> tags
@@ -66,7 +69,6 @@ class ComponentRenderer
         // Decode Alpine.js attributes
         $result = $this->decodeAlpineAttributes($result);
 
-        $this->badLog($result, 'RETURNED BY RENDER');
         return $result;
     }
 
@@ -78,12 +80,8 @@ class ComponentRenderer
         $xpath = new DOMXPath($dom);
         $nodes = $xpath->query('//*[starts-with(local-name(), "x-") and not(node())]');
 
-        // Debugging: Output the number of nodes found
-        // $this->logToConsole("Self-closing tags found: " . $nodes->length);
-
         foreach ($nodes as $node) {
             $name = $node->nodeName;
-            // $this->logToConsole("Processing self-closing tag: " . $name);
 
             $view = $this->locateView(substr($name, 2));
             $attributes = $this->parseAttributes($node);
@@ -94,9 +92,6 @@ class ComponentRenderer
                 ? $component->withView($view)->withData($attributes)->render()
                 : $this->renderView($view, $attributes);
 
-            // Debugging: Output the replacement content
-            // $this->logToConsole("Replacement content for self-closing tag: " . $replacement);
-
             // Create a new DOMDocument to parse the replacement content
             $replacementDom = new DOMDocument();
             @$replacementDom->loadHTML('<?xml encoding="UTF-8"><body>' . $replacement . '</body>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_NOERROR);
@@ -104,12 +99,8 @@ class ComponentRenderer
             // Check if the body element exists
             $body = $replacementDom->getElementsByTagName('body')->item(0);
             if ($body === null) {
-                // $this->logToConsole("Error: Body element not found in replacement content.");
                 continue;
             }
-
-            // Debugging: Output the body content
-            // $this->logToConsole("Body content: " . $replacementDom->saveHTML($body));
 
             // Import the replacement content into the original DOMDocument
             $fragment = $dom->createDocumentFragment();
@@ -130,12 +121,8 @@ class ComponentRenderer
         $xpath = new DOMXPath($dom);
         $nodes = $xpath->query('//*[starts-with(local-name(), "x-") and node()]');
 
-        // Debugging: Output the number of nodes found
-        // $this->logToConsole("Paired tags found: " . $nodes->length);
-
         foreach ($nodes as $node) {
             $name = $node->nodeName;
-            // $this->logToConsole("Processing paired tag: " . $name);
 
             $view = $this->locateView(substr($name, 2));
             $attributes = $this->parseAttributes($node);
@@ -152,10 +139,7 @@ class ComponentRenderer
                 ? $component->withView($view)->withData($attributes)->render()
                 : $this->renderView($view, $attributes);
 
-            // Debugging: Output the replacement content
-            // $this->logToConsole("Replacement content for paired tag: " . $replacement);
-
-            // Ensure well-formed XML
+            // Ensure well-formed XML // really needed?
             $replacement = $this->ensureWellFormedXML($replacement);
 
             $fragment = $dom->createDocumentFragment();
@@ -261,21 +245,6 @@ class ComponentRenderer
         return $dom->saveXML($dom->documentElement);
     }
 
-    /**
-     * Logs a message to the JavaScript console.
-     */
-    private function logToConsole(string $message): void
-    {
-        echo "<script>console.log(" . json_encode($message) . ");</script>";
-    }
-
-    private function badLog(string $content, string $header): void
-    {
-        return;
-        echo PHP_EOL . '<pre>' . PHP_EOL . PHP_EOL . '=============== ' . $header .  ':  ============</pre>' . PHP_EOL;
-        echo $content;
-        echo '<pre>' . PHP_EOL . PHP_EOL . '</pre>' . PHP_EOL;
-    }
     /**
      * Encodes Alpine.js attributes to preserve them during DOMDocument processing.
      */
