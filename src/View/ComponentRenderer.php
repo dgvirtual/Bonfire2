@@ -25,27 +25,32 @@ class ComponentRenderer
             return $output;
         }
 
-        // Ensure the output is properly encoded
+        $this->badLog($output, 'RECEIVED FOR RENDERING');
         $output = mb_convert_encoding($output, 'HTML-ENTITIES', 'UTF-8');
+
+        // Ensure the output is properly encoded
 
         // Load the HTML into DOMDocument
         $dom = new DOMDocument('1.0', 'UTF-8');
         @$dom->loadHTML($output, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
 
         // Debugging: Log that renderSelfClosingTags is about to be called
-        $this->logToConsole("Calling renderSelfClosingTags");
+        // $this->logToConsole("Calling renderSelfClosingTags");
 
         // Process self-closing tags
         $this->renderSelfClosingTags($dom);
 
         // Debugging: Log that renderPairedTags is about to be called
-        $this->logToConsole("Calling renderPairedTags");
+        // $this->logToConsole("Calling renderPairedTags");
 
         // Process paired tags
         $this->renderPairedTags($dom);
 
         // Return the modified HTML
-        return $dom->saveHTML();
+        $result = $dom->saveHTML();
+        $result = html_entity_decode($result, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $this->badLog($result, 'RETURNED BY RENDER AFTER DECODING');
+        return $result;
     }
 
     /**
@@ -55,51 +60,53 @@ class ComponentRenderer
     {
         $xpath = new DOMXPath($dom);
         $nodes = $xpath->query('//*[starts-with(local-name(), "x-") and not(node())]');
-    
+
         // Debugging: Output the number of nodes found
-        $this->logToConsole("Self-closing tags found: " . $nodes->length);
-    
+        // $this->logToConsole("Self-closing tags found: " . $nodes->length);
+
         foreach ($nodes as $node) {
             $name = $node->nodeName;
-            $this->logToConsole("Processing self-closing tag: " . $name);
-    
+            // $this->logToConsole("Processing self-closing tag: " . $name);
+
             $view = $this->locateView(substr($name, 2));
             $attributes = $this->parseAttributes($node);
             $attributes['slot'] = ''; // Ensure slot is defined for self-closing tags
             $component = $this->factory(substr($name, 2), $view);
-    
+
             $replacement = $component instanceof Component
                 ? $component->withView($view)->withData($attributes)->render()
                 : $this->renderView($view, $attributes);
-    
+
+            $this->badLog($replacement, 'GENERATED REPLACEMENT');
+
             // Debugging: Output the replacement content
-            $this->logToConsole("Replacement content for self-closing tag: " . $replacement);
-    
+            // $this->logToConsole("Replacement content for self-closing tag: " . $replacement);
+
             // Create a new DOMDocument to parse the replacement content
             $replacementDom = new DOMDocument();
-            @$replacementDom->loadHTML('<?xml encoding="UTF-8"><body>' . $replacement . '</body>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-    
+            @$replacementDom->loadHTML('<?xml encoding="UTF-8"><body>' . $replacement . '</body>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD | LIBXML_NOERROR);
+
             // Check if the body element exists
             $body = $replacementDom->getElementsByTagName('body')->item(0);
             if ($body === null) {
-                $this->logToConsole("Error: Body element not found in replacement content.");
+                // $this->logToConsole("Error: Body element not found in replacement content.");
                 continue;
             }
-    
+
             // Debugging: Output the body content
-            $this->logToConsole("Body content: " . $replacementDom->saveHTML($body));
-    
+            // $this->logToConsole("Body content: " . $replacementDom->saveHTML($body));
+
             // Import the replacement content into the original DOMDocument
             $fragment = $dom->createDocumentFragment();
             foreach ($body->childNodes as $child) {
                 $fragment->appendChild($dom->importNode($child, true));
             }
-    
+
             // Replace the original node with the replacement content
             $node->parentNode->replaceChild($fragment, $node);
         }
     }
-    
+
 
 
     /**
@@ -111,11 +118,11 @@ class ComponentRenderer
         $nodes = $xpath->query('//*[starts-with(local-name(), "x-") and node()]');
 
         // Debugging: Output the number of nodes found
-        $this->logToConsole("Paired tags found: " . $nodes->length);
+        // $this->logToConsole("Paired tags found: " . $nodes->length);
 
         foreach ($nodes as $node) {
             $name = $node->nodeName;
-            $this->logToConsole("Processing paired tag: " . $name);
+            // $this->logToConsole("Processing paired tag: " . $name);
 
             $view = $this->locateView(substr($name, 2));
             $attributes = $this->parseAttributes($node);
@@ -133,7 +140,7 @@ class ComponentRenderer
                 : $this->renderView($view, $attributes);
 
             // Debugging: Output the replacement content
-            $this->logToConsole("Replacement content for paired tag: " . $replacement);
+            // $this->logToConsole("Replacement content for paired tag: " . $replacement);
 
             // Ensure well-formed XML
             $replacement = $this->ensureWellFormedXML($replacement);
@@ -248,4 +255,13 @@ class ComponentRenderer
     {
         echo "<script>console.log(" . json_encode($message) . ");</script>";
     }
+
+    private function badLog(string $content, string $header): void
+    {
+        //return;
+        echo PHP_EOL . '<pre>' . PHP_EOL . PHP_EOL . '=============== ' . $header .  ':  ============</pre>' . PHP_EOL;
+        echo $content;
+        echo '<pre>' . PHP_EOL . PHP_EOL . '</pre>' . PHP_EOL;
+    }
+
 }
