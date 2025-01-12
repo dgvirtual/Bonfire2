@@ -13,24 +13,44 @@ namespace Bonfire\Users;
 
 use Bonfire\Search\Interfaces\SearchProviderInterface;
 use Bonfire\Users\Models\UserModel;
+use Bonfire\Core\Traits\SearchInMeta;
 
 class SearchProvider extends UserModel implements SearchProviderInterface
 {
+    use SearchInMeta;
     /**
      * Performs a primary search for just this resource.
      */
     public function search(string $term, int $limit = 10, ?array $post = null): array
     {
         // @phpstan-ignore-next-line
-        return $this->select('users.*')
-            ->distinct()
-            ->join('auth_identities', 'auth_identities.user_id = users.id', 'inner')
-            ->like('first_name', $term, 'right', true, true)
+        $query = $this->select('users.*')
+            ->distinct();
+
+        $query->join('auth_identities', 'auth_identities.user_id = users.id', 'inner');
+
+        $searchInMeta = setting('Users.includeMetaFieldsInSearech');
+
+        if (!empty($searchInMeta)) {
+            // TODO: find a better way to access both of these variables -
+            // Entity to which the data is assigned and table name to join meta_info with
+            $query->joinMetaInfo('Bonfire\Users\User', 'users');
+        }
+
+        $query->like('first_name', $term, 'right', true, true)
             ->orlike('last_name', $term, 'right', true, true)
             ->orLike('username', $term, 'right', true, true)
-            ->orLike('secret', $term, 'both', true, true)
-            ->orderBy('first_name', 'asc')
-            ->findAll($limit);
+            ->orLike('secret', $term, 'both', true, true);
+
+        if (!empty($searchInMeta)) {
+            foreach ($searchInMeta as $metaField) {
+                $query->orLikeInMetaInfo($metaField, $term, 'both', true, true);
+            }
+        }
+
+        $query->orderBy('first_name', 'asc');
+
+        return $query->findAll($limit);
     }
 
     /**
