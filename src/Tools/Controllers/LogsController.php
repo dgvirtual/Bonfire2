@@ -41,7 +41,12 @@ class LogsController extends AdminController
         // Load the Log Files.
         $logs = array_reverse(get_filenames($this->logsPath));
 
-        unset($logs[0]);
+        // Define the regular expression pattern for log files
+        $logPattern = '/^log-\d{4}-\d{2}-\d{2}\.log$/';
+        // Filter the array removing index.html and other files that do not match
+        $logs = array_filter($logs, function ($filename) use ($logPattern) {
+            return preg_match($logPattern, $filename);
+        });
 
         $result = $this->logsHandler->paginateLogs($logs, $this->logsLimit);
 
