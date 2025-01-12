@@ -44,7 +44,7 @@ in the following output:
 /> 
 ```
 
-## Custom Tags
+## Tags With Content
 
 You can include the content within the opening and closing tags by inserting the reserved `$slot` variable: 
 
@@ -61,10 +61,14 @@ You can include the content within the opening and closing tags by inserting the
 
 ## Controlled Components
 
-Finally, you can create a class to add additional logic to the output. The file must be in the same directory
-as the component view, and should have a name that is the PascalCase version of the filename, with 'Component'
-added to the end of it. 
+Finally, you can create a class to add additional logic to the output for both self-closing tags and tags 
+with content. The file must be in the same directory as the component view, and should have a name that is
+the PascalCase version of the filename, with 'Component' added to the end of it. Any attributes that you 
+set on the custom element and any content within element will be passed to the class of the controlled 
+component to be, optionally, processed by the component class and/or rendered by the comonent view file. 
+The data you pass will be available within the class as it's `$data` property (the tag content – as 
+`$data['slot']` property). 
 
 A `famous-qoutes` component would have a view called `famous-quotes.php` and a controlling class called
-`FamousQuotesComponent.php`. The class must extend `Bonfire\View\Component`. The only requirement is that you 
-implment a method called `render()`. 
+`FamousQuotesComponent.php`. The class must extend `Bonfire\View\Component`. The only requirement is that you
+implement a method called `render()`.

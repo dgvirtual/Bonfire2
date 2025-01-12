@@ -95,14 +95,14 @@ class ComponentRenderer
             $component  = $this->factory($match['name'], $view);
 
             return $component instanceof Component
-                ? $component->withView($view)->render()
+                ? $component->withView($view)->withData($attributes)->render()
                 : $this->renderView($view, $attributes);
         }, $output);
     }
 
     private function renderPairedTags(string $output): string
     {
-         $pattern = '/<\s*x[-:](?<name>[\w\-:\.]*?)(?<attributes>[\s\S\=\'\"]*)?>(?<slot>.*)<\/\s*x-\1\s*>/uiUsm';
+        $pattern = '/<\s*x[-:](?<name>[\w\-:\.]*?)(?<attributes>[\s\S\=\'\"]*)?>(?<slot>.*)<\/\s*x-\1\s*>/uiUsm';
         /*
             $matches[0] = full tags matched and all of its content
             $matches[name] = tag name (minus the `x-`)
@@ -181,7 +181,7 @@ class ComponentRenderer
     private function factory(string $name, string $view): ?Component
     {
         // Locate the class in the same folder as the view
-        $class    = pascalize($name) . 'Component.php';
+        $class    = pascalize(str_replace('-', '_', $name)) . 'Component.php';
         $filePath = str_replace($name . '.php', $class, $view);
 
         if (empty($filePath)) {
