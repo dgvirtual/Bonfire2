@@ -185,10 +185,6 @@ trait HasMeta
         $this->hydrateMeta();
         helper('setting');
 
-        $inserts = [];
-        $updates = [];
-        $deletes = [];
-
         $metaInfo = setting("{$this->configClass}.metaFields");
         if (empty($metaInfo)) {
             return;
@@ -198,6 +194,10 @@ trait HasMeta
             if (! is_array($fields) || $fields === []) {
                 continue;
             }
+
+            $inserts = [];
+            $updates = [];
+            $deletes = [];
 
             foreach ($fields as $field => $info) {
                 $field    = strtolower($field);
