@@ -42,8 +42,8 @@ class Auth extends ShieldAuth
         'register'                    => '\Bonfire\Views\Auth\register',
         'forgotPassword'              => '\CodeIgniter\Shield\Views\forgot_password',
         'resetPassword'               => '\CodeIgniter\Shield\Views\reset_password',
-        'action_email_2fa'            => '\CodeIgniter\Shield\Views\email_2fa_show',
-        'action_email_2fa_verify'     => '\CodeIgniter\Shield\Views\email_2fa_verify',
+        'action_email_2fa'            => '\Bonfire\Views\Auth\email_2fa_show',
+        'action_email_2fa_verify'     => '\Bonfire\Views\Auth\email_2fa_verify',
         'action_email_2fa_email'      => '\CodeIgniter\Shield\Views\Email\email_2fa_email',
         'action_email_activate_show'  => '\Bonfire\Views\Auth\email_activate_show',
         'action_email_activate_email' => '\CodeIgniter\Shield\Views\Email\email_activate_email',
@@ -84,9 +84,9 @@ class Auth extends ShieldAuth
      *
      * You must register actions in the order of the actions to be performed.
      *
-     * Available actions with Shield:
-     * - register: \CodeIgniter\Shield\Authentication\Actions\EmailActivator::class
-     * - login:    \CodeIgniter\Shield\Authentication\Actions\Email2FA::class
+     * Available actions with Shield, both extended with Bonfire2 versions:
+     * - register: \Bonfire\Auth\Actions\EmailActivator::class
+     * - login:    \Bonfire\Auth\Actions\Email2FA::class
      *
      * @var array<string, class-string<ActionInterface>|null>
      */
