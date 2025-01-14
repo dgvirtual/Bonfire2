@@ -12,10 +12,6 @@
 
                 <p><?= lang('Auth.emailConfirmCode') ?></p>
 
-                <?php if (session('error') !== null) : ?>
-                <div class="alert alert-danger"><?= session('error') ?></div>
-                <?php endif ?>
-
                 <form action="<?= url_to('auth-action-verify') ?>" method="post">
                     <?= csrf_field() ?>
 

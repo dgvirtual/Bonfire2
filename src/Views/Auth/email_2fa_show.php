@@ -12,10 +12,6 @@
 
                 <p><?= lang('Auth.confirmEmailAddress') ?></p>
 
-                <?php if (session('error')) : ?>
-                    <div class="alert alert-danger"><?= session('error') ?></div>
-                <?php endif ?>
-
                 <form action="<?= url_to('auth-action-handle') ?>" method="post">
                     <?= csrf_field() ?>
 
