@@ -1,5 +1,6 @@
-<?php use Bonfire\Auth\Actions\EmailActivator;
-use CodeIgniter\Shield\Authentication\Actions\Email2FA;
+<?php 
+use Bonfire\Auth\Actions\EmailActivator;
+use Bonfire\Auth\Actions\Email2FA;
 use CodeIgniter\Shield\Authentication\Passwords\CompositionValidator;
 use CodeIgniter\Shield\Authentication\Passwords\NothingPersonalValidator;
 use CodeIgniter\Shield\Authentication\Passwords\DictionaryValidator;
@@ -124,7 +125,7 @@ $this->extend('master') ?>
                     <div class="col-12 col-sm-4">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="email2FA"
-                                   value="CodeIgniter\Shield\Authentication\Actions\Email2FA" id="email-2fa"
+                                   value="Bonfire\Auth\Actions\Email2FA" id="email-2fa"
                                 <?php if (old('email2FA', setting('Auth.actions')['login']) === Email2FA::class) : ?>
                                     checked
                                 <?php endif ?>
