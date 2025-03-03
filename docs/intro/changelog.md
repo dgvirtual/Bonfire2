@@ -4,6 +4,23 @@ This holds the change history for Bonfire as we lead up to a 1.0 release. It's n
 
 **IMPORTANT!** *Breaking changes* are marked with words `breaking change` in parentheses right after the date.
 
+## 3 March 2025 (breaking change)
+
+Due to a fix for widget code running unnecessary queries ([issue #524](https://github.com/lonnieezell/Bonfire2/issues/524)) the Module::initAdmin() code
+has been updated.
+
+If you have custom admin modules installed with custom widgets, you will need to update their code,
+see [widgets documentation](../building_admin_modules/widgets.md)  and code in Bonfires' Groups and Users modules for detail.
+
+The changes will also leave orphaned widget data in database table `settings`. To delete all
+data related to widget status issue this command on database:
+
+```sql
+DELETE FROM "settings"
+WHERE "class" = 'Bonfire\Widgets\Config\Stats'
+AND ("key" LIKE 'Chart_%' OR "key" LIKE 'Stats_%');
+```
+
 ## 26 February 2025 (breaking change)
 
 Finished implementation of **<x-button\>** component in the Admin theme. Users need to update the
