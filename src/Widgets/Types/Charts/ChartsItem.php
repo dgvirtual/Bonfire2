@@ -302,9 +302,15 @@ class ChartsItem implements Item
             return $this;
         }
 
-        // Chart Section Begin
-        $groupsData = db_connect()->table($tableName)
+        $db         = db_connect();
+        $fieldNames = $db->getFieldNames($tableName);
+
+        $groupsData = $db->table($tableName)
             ->select($groupField);
+
+        if (in_array('deleted_at', $fieldNames, true)) {
+            $groupsData->where('deleted_at', null);
+        }
 
         $groupsData = match ($selectMode) {
             'count' => $groupsData->selectCount($countField),
