@@ -39,7 +39,11 @@ class UserController extends AdminController
         /** @var UserFilter $userModel */
         $userModel = model(UserFilter::class);
 
-        $userModel->filter($this->request->getGet('filters'));
+        $userModel->filter($this->request->getGet('filters'))
+            // TODO: withPermissions() does not prevent lazy loading, investigate with Shield team
+            ->withPermissions()
+            ->withIdentities()
+            ->withGroups();
 
         $view = $this->request->hasHeader('HX-Request')
             ? $this->viewPrefix . '_table'
