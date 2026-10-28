@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -499,6 +499,39 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#28-october-2026-breaking-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        28 October 2026 (breaking change)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-october-2026-breaking-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        27 October 2026 (breaking change)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-october-2026-breaking-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11 October 2026 (breaking change)
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#8-october-2026-breaking-change" class="md-nav__link">
@@ -1479,6 +1512,39 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#28-october-2026-breaking-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        28 October 2026 (breaking change)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-october-2026-breaking-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        27 October 2026 (breaking change)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-october-2026-breaking-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11 October 2026 (breaking change)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#8-october-2026-breaking-change" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1653,6 +1719,47 @@
 <h1 id="change-log">Change Log</h1>
 <p>This holds the change history for Bonfire as we lead up to a 1.0 release. It's not exhaustive, but should give you a good idea of the changes that have been made and how it might impact you.</p>
 <p><strong>IMPORTANT!</strong> <em>Breaking changes</em> are marked with words <code>breaking change</code> in parentheses right after the date.</p>
+<h2 id="28-october-2026-breaking-change">28 October 2026 (breaking change)</h2>
+<p><code>&lt;x-switch&gt;</code> gained an <code>offValue</code> attribute: the value its hidden input posts when the switch is off (<code>0</code> by default).
+An empty <code>offValue</code> posts nothing, which Bonfire's own views now use for array names like <code>permissions[]</code>. Installs
+that published their own copy of the Admin theme must re-publish it; an older copy posts <code>0</code> for every switch that is
+off in those lists. The user edit screens (details, permissions and security) use the new admin layout.</p>
+<p>The settings pages share a new <code>&lt;x-settings-layout&gt;</code> component (the Settings head and a sub-nav of the settings
+pages). An older published copy of the Admin theme doesn't have it, so re-publish the theme or those pages fail to
+render. Turning <strong>Site Online</strong> off now saves <code>0</code>; the offline check treats any empty value as offline.</p>
+<p>The Logs, log view, Recycler and System Info pages use the new admin layout, with styles an older published copy of
+the Admin theme doesn't have, so re-publish the theme. A log file can now be downloaded from its page.</p>
+<p>Also fixed: a custom SMTP port is saved and shown again, and a user's name, profile fields and avatar initials are
+escaped wherever the admin shows them. The Recycler's Restore button no longer asks for confirmation; Purge asks in
+two steps.</p>
+<h2 id="27-october-2026-breaking-change">27 October 2026 (breaking change)</h2>
+<p>The Admin theme is being redesigned. Installs that published their own copy of the Admin theme must re-publish it:
+Bonfire's admin views now use new View Components (<code>&lt;x-setting-row&gt;</code>, <code>&lt;x-switch&gt;</code>, <code>&lt;x-segmented&gt;</code>, <code>&lt;x-chip&gt;</code>,
+<code>&lt;x-status&gt;</code>, <code>&lt;x-empty-state&gt;</code>, <code>&lt;x-selection-bar&gt;</code>, <code>&lt;x-tabs&gt;</code>, <code>&lt;x-save-bar&gt;</code>) that an older copy doesn't have,
+and the shell (<code>master.php</code>, <code>_header.php</code>, <code>Components/sidebar.php</code>) has a new layout. <code>&lt;x-page-head&gt;</code> and
+<code>&lt;x-admin-box&gt;</code> gained optional attributes and keep working as before without them; <code>&lt;x-button&gt;</code> no longer adds
+<code>btn-lg</code>. Escape component attribute values with <code>esc()</code>: the renderer now decodes HTML entities in attribute
+values before handing them to the component, so a custom component that prints an attribute must escape it. See
+<a href="../../building_admin_modules/view_components/">View Components</a>.</p>
+<p>Dashboard stats widgets are now neutral cards, so a <code>StatsItem</code>'s <code>bgColor</code> no longer has a visible effect.</p>
+<p>The admin shell has a collapsible sidebar (remembered per viewer), a breadcrumb, a dark-mode toggle and a ⌘K / Ctrl+K
+command palette that jumps to any admin page or runs a search. Admin pages below a menu item can name themselves in the
+breadcrumb with a <code>crumb</code> view section (and <code>crumbParent</code>, when the page isn't under the active menu item).</p>
+<p>The admin theme has an accent color. Change it under <strong>Settings → General → Appearance</strong>, or set it from code
+with <code>setting('Site.adminAccent', '#2F6FEB')</code>. It must be a <code>#rrggbb</code> hex color. Buttons, links, focus rings and checked
+inputs follow it. The admin also gains a dark mode that follows the operating system until a viewer picks one, and it
+now uses the Geist font. Installs that published their own copy of the Admin theme need to re-publish it to get the
+new tokens; until then the accent setting saves but has no visible effect.</p>
+<h2 id="11-october-2026-breaking-change">11 October 2026 (breaking change)</h2>
+<p>Bonfire no longer adds a <code>users</code> rule group to <code>Config\Validation</code>. Nothing in Bonfire used it, and because
+<code>Config\Validation</code> does not declare <code>$users</code>, it raised a "Creation of dynamic property" deprecation under PHP 8.2+.
+The rules for the user form live in <code>Bonfire\Users\Config\Users::$validation</code>. If your app calls
+<code>$this-&gt;validate('users')</code>, add the rules you need to your own <code>app/Config/Validation.php</code> as <code>public array $users</code>. If
+you already declare <code>$users</code> there, Bonfire no longer merges its <code>email</code>, <code>username</code>, <code>first_name</code> and <code>last_name</code> rules
+into it, so add any of those you rely on.</p>
+<p>Fixes: Bonfire found no themes under CodeIgniter 4.7.5, so every admin and auth page failed with "<code>Admin</code> is not a
+valid theme folder". <code>Theme::available()</code> now lists theme folders itself instead of using <code>get_dir_file_info()</code>, which
+no longer returns folders.</p>
 <h2 id="8-october-2026-breaking-change">8 October 2026 (breaking change)</h2>
 <p>The Recycler no longer guesses at what a model can do by checking <code>method_exists()</code>. A model that customizes the
 Recycler must now implement the matching interface from <code>Bonfire\Recycler\Interfaces</code>: <code>CustomRecyclerQuery</code>
@@ -1857,10 +1964,10 @@ composer.json scripts section:</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.footer", "content.action.edit", "navigation.top", "search.suggest", "search.highlight", "search.share", "navigation.path", "navigation.indexes", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.footer", "content.action.edit", "navigation.top", "search.suggest", "search.highlight", "search.share", "navigation.path", "navigation.indexes", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
       
