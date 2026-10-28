@@ -501,6 +501,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#28-october-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        28 October 2026
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#28-october-2026-breaking-change" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -659,6 +670,8 @@
       
         
           
+        
+      
         
       
         
@@ -847,6 +860,34 @@
     
   
     The Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/customizing_the_dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Customizing the Dashboard
   
 
     
@@ -1205,6 +1246,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1261,6 +1306,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../building_admin_modules/actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Row and Bulk Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../building_admin_modules/creating_an_admin_module/" class="md-nav__link">
         
   
@@ -1297,6 +1370,34 @@
     
   
     Dashboard Cells
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building_admin_modules/dashboard_widgets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Widgets
   
 
     
@@ -1512,6 +1613,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#28-october-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        28 October 2026
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#28-october-2026-breaking-change" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1719,7 +1831,37 @@
 <h1 id="change-log">Change Log</h1>
 <p>This holds the change history for Bonfire as we lead up to a 1.0 release. It's not exhaustive, but should give you a good idea of the changes that have been made and how it might impact you.</p>
 <p><strong>IMPORTANT!</strong> <em>Breaking changes</em> are marked with words <code>breaking change</code> in parentheses right after the date.</p>
+<h2 id="28-october-2026">28 October 2026</h2>
+<p>Each admin can now change a dashboard widget's settings for their own dashboard: in edit mode, its sliders button
+opens them in a panel, and they are saved with the layout (see
+<a href="../../modules/customizing_the_dashboard/#widget-settings">Customizing the Dashboard</a>). Stat cards, charts and Log
+activity have settings; until an admin changes one, it follows the site-wide value in Settings → Widgets. Widgets
+declare their settings with <code>fields()</code>, a list of <code>Bonfire\Dashboard\WidgetField</code>, and get their values in
+<code>render(WidgetValues $values)</code>; <code>DashboardWidget::settingsUrl()</code> is gone (see
+<a href="../../building_admin_modules/dashboard_widgets/#settings">Dashboard Widgets</a>).</p>
+<p>The Log activity widget now shows a column for each of the last days up to today, with a thin line for days without
+a log file. Its <strong>Days to show</strong> setting (formerly <em>Log files to show</em>) keeps its saved value, and now defaults to 7.</p>
+<p>Dashboard widgets can need a permission: pass <code>'permission'</code> to a <code>StatsItem</code> or <code>ChartsItem</code>, and admins who lack it
+don't see it in the widget library or on their dashboard, nor is its data fetched for them. The built-in Users widgets
+need <code>users.list</code> and the Groups widgets <code>groups.settings</code>. Admins with <code>widgets.settings</code> can <strong>Save as site
+default</strong> from the dashboard's edit bar, and <strong>Reset site default</strong> in Settings → Widgets (see
+<a href="../../modules/customizing_the_dashboard/#the-site-default">Customizing the Dashboard</a>). The Settings → Widgets
+switches are now labelled as choosing which widgets are <em>available</em>. Quick Links is now a native widget,
+<code>Bonfire\Dashboard\Widgets\QuickLinksWidget</code>, registered by the Dashboard module under its old id, and no longer in
+the default <code>Dashboard.cells</code>; installs that still list <code>Bonfire\Dashboard\DashboardCells::quickLinks</code> show it once,
+in place. <code>DashboardCells::quickLinks()</code> is deprecated. Building widgets is documented in
+<a href="../../building_admin_modules/dashboard_widgets/">Dashboard Widgets</a>.</p>
 <h2 id="28-october-2026-breaking-change">28 October 2026 (breaking change)</h2>
+<p>Lists have a shared system for row and bulk actions (see <a href="../../building_admin_modules/actions/">Row and Bulk Actions</a>):
+an action is one class, registered on a named list, run through <code>POST admin/actions/{list}/{action}</code> with permission,
+CSRF and per-record checks, confirmation (with or without JavaScript), and an optional queue through
+<code>codeigniter4/queue</code>. Run <code>php spark migrate --all</code> for its new <code>action_runs</code> table. The Users and Logs deletes use it,
+which removes routes: <code>GET admin/users/{id}/delete</code> and <code>POST admin/users/delete-batch</code> are gone, as is
+<code>UserController::delete()</code> and <code>deleteBatch()</code>. Links or forms that used them must post to
+<code>admin/actions/users/delete-users</code> instead, with the IDs in <code>selects[]</code>. The Users and Logs list checkboxes are now
+named <code>selects[]</code> with the ID as their value. Every inline <code>confirm()</code> is replaced by <code>&lt;x-confirm-dialog&gt;</code>, which also
+handles <code>hx-confirm</code>. Installs that published their own copy of the Admin theme must re-publish it: <code>master.php</code> gains
+<code>&lt;x-confirm-dialog /&gt;</code> and <code>&lt;x-action-run /&gt;</code>, and the lists use the new <code>&lt;x-row-actions&gt;</code> and <code>&lt;x-bulk-actions&gt;</code>.</p>
 <p><code>&lt;x-switch&gt;</code> gained an <code>offValue</code> attribute: the value its hidden input posts when the switch is off (<code>0</code> by default).
 An empty <code>offValue</code> posts nothing, which Bonfire's own views now use for array names like <code>permissions[]</code>. Installs
 that published their own copy of the Admin theme must re-publish it; an older copy posts <code>0</code> for every switch that is
@@ -1729,9 +1871,31 @@ pages). An older published copy of the Admin theme doesn't have it, so re-publis
 render. Turning <strong>Site Online</strong> off now saves <code>0</code>; the offline check treats any empty value as offline.</p>
 <p>The Logs, log view, Recycler and System Info pages use the new admin layout, with styles an older published copy of
 the Admin theme doesn't have, so re-publish the theme. A log file can now be downloaded from its page.</p>
+<p>A new <strong>Log activity</strong> dashboard widget charts the entries of the newest log files per level (see
+<a href="../../building_admin_modules/widgets/#log-activity-widget">Widgets</a>). Turn it on in Settings → Widgets; its own tab sets
+how many files it shows and whether Debug entries are left out. It is shown by a new
+<code>Bonfire\Widgets\Cells\WidgetCells::logs</code> cell: installs with their own <code>Config\Dashboard</code> must add that cell to
+<code>$cells</code> to see it. Its styles are in the Admin theme, so re-publish the theme.</p>
+<p>Each admin can customize their own dashboard (see <a href="../../modules/dashboard/#customizing-the-dashboard">The Dashboard</a>):
+<strong>Customize</strong> lets them drag widgets into a new order, group them into titled sections, size them (¼ / ⅓ / ½ / ⅔ /
+Full, from their tools or by dragging a corner), remove them and add others from a widget library, all of it also from
+the keyboard, with undo and redo. <strong>Save layout</strong> stores the layout as theirs alone; saving the default layout, after
+resetting to it, forgets theirs. Every stat card, chart, Log activity and custom cell in <code>Dashboard.cells</code> is now
+one widget, and modules can add their own by implementing <code>Bonfire\Dashboard\DashboardWidget</code> and calling
+<code>service('dashboard')-&gt;register()</code> in <code>initAdmin()</code> (see <a href="../../building_admin_modules/widgets/#your-own-dashboard-widget">Widgets</a>).
+The switches in Settings → Widgets now decide which widgets are <em>available</em> in the palette, and are on unless a site
+admin switches them off; their stored keys are unchanged. The default dashboard is the new <code>Dashboard.layout</code> config
+property: Quick Links, a Users section (Users by Group and Users in Recycler) and a Monitoring section (Log activity).
+Stats, charts and Log activity no longer appear on it by being switched on, and each admin adds the ones they want
+from the widget library. Installs with their own <code>Config\Dashboard</code> and no <code>$layout</code> property get the plain cells of
+<code>Dashboard.cells</code> (Quick Links and your own cells) instead. A stats or chart item now fetches its data only
+when it is on the viewer's dashboard, so <code>service('dashboardContext')-&gt;shows()</code> answers "is it in the viewer's
+layout". The dashboard needs the new <code>admin/js/dashboard.js</code> and new <code>admin.css</code> rules
+from the Admin theme, so installs that published their own copy of the Admin theme must re-publish it; with an older
+copy the dashboard shows its widgets stacked in one column and Customize does nothing.</p>
 <p>Also fixed: a custom SMTP port is saved and shown again, and a user's name, profile fields and avatar initials are
-escaped wherever the admin shows them. The Recycler's Restore button no longer asks for confirmation; Purge asks in
-two steps.</p>
+escaped wherever the admin shows them. The Recycler's Restore button no longer asks for confirmation; Purge asks
+first.</p>
 <h2 id="27-october-2026-breaking-change">27 October 2026 (breaking change)</h2>
 <p>The Admin theme is being redesigned. Installs that published their own copy of the Admin theme must re-publish it:
 Bonfire's admin views now use new View Components (<code>&lt;x-setting-row&gt;</code>, <code>&lt;x-switch&gt;</code>, <code>&lt;x-segmented&gt;</code>, <code>&lt;x-chip&gt;</code>,

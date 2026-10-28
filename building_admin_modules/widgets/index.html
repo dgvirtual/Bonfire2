@@ -488,6 +488,8 @@
       
         
       
+        
+      
     
     
     
@@ -664,6 +666,34 @@
     
   
     The Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/customizing_the_dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Customizing the Dashboard
   
 
     
@@ -1024,6 +1054,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1080,6 +1114,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Row and Bulk Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../creating_an_admin_module/" class="md-nav__link">
         
   
@@ -1116,6 +1178,34 @@
     
   
     Dashboard Cells
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dashboard_widgets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Widgets
   
 
     
@@ -1347,6 +1437,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#your-own-dashboard-widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your own dashboard widget
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#statistic-widget" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1397,6 +1498,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#log-activity-widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log activity widget
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configuration_2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1413,6 +1525,17 @@
     <span class="md-ellipsis">
       
         Charts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log activity
       
     </span>
   </a>
@@ -1478,6 +1601,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#your-own-dashboard-widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your own dashboard widget
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#statistic-widget" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1528,6 +1662,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#log-activity-widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log activity widget
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configuration_2" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1544,6 +1689,17 @@
     <span class="md-ellipsis">
       
         Charts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Log activity
       
     </span>
   </a>
@@ -1636,6 +1792,10 @@ a chart of some sort.</p>
 which can be used to specify which information is displayed for the widget, as well as whether it's animated, where
 labels are displayed, etc.</p>
 <hr />
+<h2 id="your-own-dashboard-widget">Your own dashboard widget</h2>
+<p>Implement <code>Bonfire\Dashboard\DashboardWidget</code> and register it with <code>service('dashboard')-&gt;register()</code>. See
+<a href="../dashboard_widgets/">Dashboard Widgets</a>, which also maps the stats, charts and cells below onto widgets.</p>
+<hr />
 <h2 id="statistic-widget">Statistic widget</h2>
 <p>The first widget is the statistics widget, which is just a counter with a shortcut that allows me to open the
 list of elements of a module. It could be used to display a year-to-day revenue at a glance, total number of users
@@ -1686,7 +1846,7 @@ The available options are:</p>
 <p>The FontAwesome icon</p>
 <h3 id="fetching-data-only-when-it-is-shown">Fetching data only when it is shown</h3>
 <p><code>addValue()</code> and <code>addValueByFreeQuery()</code> only run their query when the dashboard is being displayed and the widget is
-enabled in the widgets settings. When you build a value yourself, as <code>buildTableUsersByGroup()</code> does, ask the same
+on the viewer's dashboard: in their layout and not switched off in the widgets settings. When you build a value yourself, as <code>buildTableUsersByGroup()</code> does, ask the same
 question before doing the work:</p>
 <pre class="highlight"><code class="language-php">use Bonfire\Widgets\ItemSettings;
 use Bonfire\Widgets\WidgetKind;
@@ -1760,6 +1920,15 @@ Examples options are:
 <li>if indicate <strong>sum</strong> then <strong>selectSum($field)</strong>  is executed</li>
 </ul>
 <hr />
+<h2 id="log-activity-widget">Log activity widget</h2>
+<p>The Log activity widget charts the last days up to today, one stacked bar per day's log file, split into Error,
+Warning, Info and Debug entries. CRITICAL, ALERT and EMERGENCY entries count as Error, and NOTICE entries count as
+Info. Each bar links to that log file, days without a log file show a thin line, and the headline counts the errors
+across the days shown.</p>
+<p>It is built in: turn it on in the widgets settings like any other widget. Only users with the <code>logs.view</code> permission
+see it, and the log files are only read when it is on and the dashboard is shown. It is displayed by the
+<code>Bonfire\Widgets\Cells\WidgetCells::logs</code> cell.</p>
+<hr />
 <h2 id="configuration_2">Configuration</h2>
 <p>All settings are available in the administration settings area.</p>
 <p>Each type of widget has its own specific settings.</p>
@@ -1823,6 +1992,15 @@ Examples options are:
 <li>Choose the location of the legend</li>
 <li>Enable animation</li>
 <li>Assign a predefined color scheme to fill the chart</li>
+</ul>
+<hr />
+<h3 id="log-activity">Log activity</h3>
+<p>You can set the default values in the <code>Bonfire\Widgets\Config\LogActivity</code> Class</p>
+<p>In the administration settings area, you can choose:</p>
+<ul>
+<li>How many of the last days to show, from 1 to 31 (7 by default). Every log file in those days is read on each
+  dashboard load.</li>
+<li>To hide Debug entries</li>
 </ul>
 
 

@@ -14,7 +14,7 @@
         <link rel="prev" href="../consent/">
       
       
-        <link rel="next" href="../../building_sites/">
+        <link rel="next" href="../customizing_the_dashboard/">
       
       
         
@@ -492,6 +492,8 @@
       
         
       
+        
+      
     
     
     
@@ -731,6 +733,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#customizing-the-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing the dashboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#quick-links" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -795,6 +808,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customizing_the_dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Customizing the Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1145,6 +1186,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1201,6 +1246,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../building_admin_modules/actions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Row and Bulk Actions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../building_admin_modules/creating_an_admin_module/" class="md-nav__link">
         
   
@@ -1237,6 +1310,34 @@
     
   
     Dashboard Cells
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building_admin_modules/dashboard_widgets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Widgets
   
 
     
@@ -1463,6 +1564,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#customizing-the-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customizing the dashboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#quick-links" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1599,22 +1711,49 @@
 <h1 id="the-dashboard">The Dashboard</h1>
 <p>The Dashboard is the first page you seen when you log into the admin area. It provides a place to put the widgets that provide a quick overview of the site's status, or other information that is important to the user.</p>
 <h2 id="configuration">Configuration</h2>
-<p>By default, the Dashboard is setup to display:</p>
+<p>By default, the Dashboard displays:</p>
 <ul>
-<li>a series of quick links</li>
-<li>any statistics that you have defined</li>
-<li>any widgets that you have added.</li>
+<li>the quick links;</li>
+<li>a <strong>Users</strong> section with the Users by Group and Users in Recycler stats, each half the width;</li>
+<li>a <strong>Monitoring</strong> section with Log activity.</li>
 </ul>
+<p>That default is the <code>$layout</code> property of the Dashboard config file, in the same format a saved layout uses. Change
+it to give every admin who hasn't customized their dashboard a different one; set it to <code>null</code> and the default is
+the cells below instead, in order:</p>
+<pre class="highlight"><code class="language-php">public ?array $layout = [
+    'version'  =&gt; 1,
+    'sections' =&gt; [
+        ['title' =&gt; '', 'widgets' =&gt; [
+            ['id' =&gt; 'cell:Bonfire\Dashboard\DashboardCells::quickLinks', 'size' =&gt; 'full'],
+        ]],
+        ['title' =&gt; 'Users', 'widgets' =&gt; [
+            ['id' =&gt; 'stats:usersExpTable693', 'size' =&gt; 'half'],
+            ['id' =&gt; 'stats:usersInRecycler693', 'size' =&gt; 'half'],
+        ]],
+        ['title' =&gt; 'Monitoring', 'widgets' =&gt; [
+            ['id' =&gt; 'logs:logActivity', 'size' =&gt; 'full'],
+        ]],
+    ],
+];</code></pre>
+<p>Widgets the viewer may not see, or that are switched off in Settings → Widgets, are left out, and so is a section
+left empty. A site admin can replace this default from the dashboard with <strong>Save as site default</strong> (see
+<a href="../customizing_the_dashboard/#the-site-default">The site default</a>).</p>
 <p>You can create additional <a href="https://codeigniter.com/user_guide/outgoing/view_cells.html">View Cells</a> and add them to the Dashboard config file to have them displayed on the Dashboard, also. They will be displayed in the order that they are listed in the config file. Each one takes up a full row.</p>
 <pre class="highlight"><code class="language-php">public array $cells = [
-    'Bonfire\Dashboard\DashboardCells::quickLinks',
     'Bonfire\Widgets\Cells\WidgetCells::stats',
+    'Bonfire\Widgets\Cells\WidgetCells::logs',
     'Bonfire\Widgets\Cells\WidgetCells::charts',
 ];</code></pre>
+<h2 id="customizing-the-dashboard">Customizing the dashboard</h2>
+<p>Every admin can arrange their own dashboard, and site admins can set the default everyone else sees. See
+<a href="../customizing_the_dashboard/">Customizing the Dashboard</a>.</p>
 <h2 id="quick-links">Quick Links</h2>
-<p>The Quick Links cell is a simple list of links that have been added to the <code>Content</code> section of the sidebar menu. It is automatically generated and displayed.</p>
+<p>The Quick Links widget greets the admin and links to each item of the <code>Content</code> section of the sidebar menu they
+may see. It is a <a href="../../building_admin_modules/dashboard_widgets/">dashboard widget</a> registered by the Dashboard module, not
+a cell any more. It keeps its old id, <code>cell:Bonfire\Dashboard\DashboardCells::quickLinks</code>, so installs whose <code>$cells</code>
+still list <code>Bonfire\Dashboard\DashboardCells::quickLinks</code> show it once, in the same place.</p>
 <h2 id="widgets">Widgets</h2>
-<p>The <code>stats</code> and <code>charts</code> cells are elements that display information on the dashboard. They are either a small informational card, or a chart of some sort.</p>
+<p>The <code>stats</code>, <code>logs</code> and <code>charts</code> cells are elements that display information on the dashboard. They are either a small informational card, or a chart of some sort.</p>
 <h3 id="settings">Settings</h3>
 <p>Each of the widget types has some basic settings in the administration settings area. Each type of widget has its own specific settings, which can be used to specify which information is displayed for the widget, as well as whether it's animated, where labels are displayed, etc.</p>
 <h3 id="statistics">Statistics</h3>
@@ -1767,13 +1906,13 @@ Examples options are:</p>
         
         
           
-          <a href="../../building_sites/" class="md-footer__link md-footer__link--next" aria-label="Next: Building Sites">
+          <a href="../customizing_the_dashboard/" class="md-footer__link md-footer__link--next" aria-label="Next: Customizing the Dashboard">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Building Sites
+                Customizing the Dashboard
               </div>
             </div>
             <div class="md-footer__button md-icon">
