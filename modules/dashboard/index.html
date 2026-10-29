@@ -755,6 +755,50 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#recent-failed-logins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recent failed logins
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recently-active" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recently active
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#action-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action runs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System health
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#widgets" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1586,6 +1630,50 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#recent-failed-logins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recent failed logins
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recently-active" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recently active
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#action-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Action runs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System health
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#widgets" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1752,6 +1840,26 @@ the cells below instead, in order:</p>
 may see. It is a <a href="../../building_admin_modules/dashboard_widgets/">dashboard widget</a> registered by the Dashboard module, not
 a cell any more. It keeps its old id, <code>cell:Bonfire\Dashboard\DashboardCells::quickLinks</code>, so installs whose <code>$cells</code>
 still list <code>Bonfire\Dashboard\DashboardCells::quickLinks</code> show it once, in the same place.</p>
+<h2 id="recent-failed-logins">Recent failed logins</h2>
+<p>The Recent failed logins widget (<code>users:failedLogins</code>) isn't on the default dashboard; add it from the widget library.
+It lists the newest unsuccessful login attempts across all accounts: who tried, from which IP address, and when. An
+attempt whose email belongs to a user links to that user's Security tab, for admins who may open it.</p>
+<h2 id="recently-active">Recently active</h2>
+<p>The Recently active widget (<code>users:recentlyActive</code>) isn't on the default dashboard; add it from the widget library. It
+lists the users active within the last 5 minutes, hour or 24 hours, most recent first, with how long ago each was
+active, and links to each user's account. Users who have never been active don't appear.</p>
+<h2 id="action-runs">Action runs</h2>
+<p>The Action runs widget (<code>actions:runs</code>) isn't on the default dashboard; add it from the widget library. It lists the
+admin's own <a href="../../building_admin_modules/actions/">queued bulk action runs</a> that need attention: queued and running
+runs, plus runs that failed in the last 7 days (set <strong>Days to show</strong> from 1 to 30). Turn on <strong>Include completed runs</strong>
+to list runs that finished in that time too. Each row shows the action, its list, status, how many records it has got
+through and when it started, newest first, and links to the run's progress page. It needs no permission: admins only
+ever see the runs they started.</p>
+<h2 id="system-health">System health</h2>
+<p>The System health widget (<code>tools:systemHealth</code>) isn't on the default dashboard; add it from the widget library. It
+lists what is wrong with the install, if anything: each file or folder in <code>writable/</code> that can't be written to, a
+missing <code>.env</code> file, and a 1-minute server load above <strong>Warn when server load is above</strong> (default 4). With no problems
+it says so in one line. It links to the System Info page and needs the <code>admin.settings</code> permission, like that page.</p>
 <h2 id="widgets">Widgets</h2>
 <p>The <code>stats</code>, <code>logs</code> and <code>charts</code> cells are elements that display information on the dashboard. They are either a small informational card, or a chart of some sort.</p>
 <h3 id="settings">Settings</h3>
