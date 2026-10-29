@@ -1845,28 +1845,12 @@ The available options are:</p>
 <p><strong>faIcon</strong></p>
 <p>The FontAwesome icon</p>
 <h3 id="fetching-data-only-when-it-is-shown">Fetching data only when it is shown</h3>
-<p><code>addValue()</code> and <code>addValueByFreeQuery()</code> only run their query when the dashboard is being displayed and the widget is
-on the viewer's dashboard: in their layout and not switched off in the widgets settings. When you build a value yourself, ask the same
-question before doing the work:</p>
-<pre class="highlight"><code class="language-php">use Bonfire\Widgets\ItemSettings;
-use Bonfire\Widgets\WidgetKind;
-
-if (! service('dashboardContext')-&gt;shows(new ItemSettings(WidgetKind::Stats, 'countAllUsers643'))) {
-    return '';
-}</code></pre>
-<p>In your own tests you can make that answer yes or no without faking the URL by injecting a subclass of
-<code>Bonfire\Widgets\DashboardContext</code> that overrides <code>isDashboard()</code>:</p>
-<pre class="highlight"><code class="language-php">use Bonfire\Widgets\DashboardContext;
-use Config\Services;
-
-Services::injectMock('dashboardContext', new class () extends DashboardContext {
-    public function isDashboard(): bool
-    {
-        return true;
-    }
-});</code></pre>
+<p><code>addValue()</code> and <code>addValueByFreeQuery()</code> store their query and run it when the value is first read. The dashboard
+reads it only for a widget in the viewer's layout whose permission they hold, so a stats item costs nothing on other
+pages. A <code>value</code> you pass directly runs whenever your module boots: build that in a widget's <code>render()</code> instead
+(see <a href="../dashboard_widgets/">Dashboard Widgets</a>).</p>
 <h2 id="configuration_1">Configuration</h2>
-<p>All settings are available in the <code>Bonfire\Widgets\Config\Stats</code> class, or in the admin settings area.</p>
+<p>All settings are available in the admin settings area.</p>
 <p>In the administration settings area, you can also choose to:
 - Display the "View Detail" link</p>
 <hr />
@@ -1925,9 +1909,8 @@ Examples options are:
 Warning, Info and Debug entries. CRITICAL, ALERT and EMERGENCY entries count as Error, and NOTICE entries count as
 Info. Each bar links to that log file, days without a log file show a thin line, and the headline counts the errors
 across the days shown.</p>
-<p>It is built in: turn it on in the widgets settings like any other widget. Only users with the <code>logs.view</code> permission
-see it, and the log files are only read when it is on and the dashboard is shown. It is displayed by the
-<code>Bonfire\Widgets\Cells\WidgetCells::logs</code> cell.</p>
+<p>It is built in (<code>Bonfire\Tools\Widgets\LogActivity</code>, id <code>logs:logActivity</code>). Only users with the <code>logs.view</code>
+permission can add it to their dashboard, and the log files are only read when it is on the dashboard being shown.</p>
 <hr />
 <h2 id="configuration_2">Configuration</h2>
 <p>All settings are available in the administration settings area.</p>
@@ -1935,7 +1918,6 @@ see it, and the log files are only read when it is on and the dashboard is shown
 <hr />
 <h3 id="charts">Charts</h3>
 <p><strong><em>Line Chart</em></strong></p>
-<p>You can set the default values in the <code>Bonfire\Widgets\Config\LineChart</code> Class</p>
 <p>In the administration settings area, you can choose to:</p>
 <ul>
 <li>Display the title</li>
@@ -1944,14 +1926,8 @@ see it, and the log files are only read when it is on and the dashboard is shown
 <li>Enable animation</li>
 <li>You can choose the value of the tension: Bezier curve tension of the line. Set to 0 to draw straightlines.</li>
 </ul>
-<p>Advanced settings:</p>
-<ul>
-<li>You can set Line color</li>
-<li>You can set Line width</li>
-</ul>
 <hr />
 <p><strong><em>Bar Chart</em></strong></p>
-<p>You can set the default values in the <code>Bonfire\Widgets\Config\BarChart</code> Class</p>
 <p>In the administration settings area, you can choose to:</p>
 <ul>
 <li>Display the title</li>
@@ -1962,7 +1938,6 @@ see it, and the log files are only read when it is on and the dashboard is shown
 </ul>
 <hr />
 <p><strong><em>Doughnut Chart</em></strong></p>
-<p>You can set the default values in the <code>Bonfire\Widgets\Config\DoughnutChart</code> Class</p>
 <p>In the administration settings area, you can choose to:</p>
 <ul>
 <li>Display the title</li>
@@ -1973,7 +1948,6 @@ see it, and the log files are only read when it is on and the dashboard is shown
 </ul>
 <hr />
 <p><strong><em>Pie Chart</em></strong></p>
-<p>You can set the default values in the <code>Bonfire\Widgets\Config\PieChart</code> Class</p>
 <p>In the administration settings area, you can choose to:</p>
 <ul>
 <li>Display the title</li>
@@ -1984,7 +1958,6 @@ see it, and the log files are only read when it is on and the dashboard is shown
 </ul>
 <hr />
 <p><strong><em>Polar Area Chart</em></strong></p>
-<p>You can set the default values in the <code>Bonfire\Widgets\Config\PolarAreaChart</code> Class</p>
 <p>In the administration settings area, you can choose to:</p>
 <ul>
 <li>Display the title</li>
@@ -1995,7 +1968,6 @@ see it, and the log files are only read when it is on and the dashboard is shown
 </ul>
 <hr />
 <h3 id="log-activity">Log activity</h3>
-<p>You can set the default values in the <code>Bonfire\Widgets\Config\LogActivity</code> Class</p>
 <p>In the administration settings area, you can choose:</p>
 <ul>
 <li>How many of the last days to show, from 1 to 31 (7 by default). Every log file in those days is read on each

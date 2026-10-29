@@ -1631,7 +1631,7 @@
 
 
 <h1 id="dashboard-widgets">Dashboard Widgets</h1>
-<p>Anything an admin can place on the dashboard is a widget. Stats, charts, Log activity and the cells in
+<p>Anything an admin can place on the dashboard is a widget. Stats, charts and the cells in
 <code>Dashboard.cells</code> become widgets on their own. For full control, implement <code>Bonfire\Dashboard\DashboardWidget</code> and
 register it from your module's <code>initAdmin()</code>. Bonfire's own Quick Links is built this way
 (<code>Bonfire\Dashboard\Widgets\QuickLinksWidget</code>).</p>
@@ -1656,7 +1656,7 @@ class OpenOrders implements DashboardWidget
     {
         return [
             WidgetField::number('limit', 'Orders to show', default: 5, min: 1, max: 20),
-            WidgetField::toggle('showTotals', 'Show totals', default: true, key: 'Shop.dashboardTotals'),
+            WidgetField::toggle('showTotals', 'Show totals', default: true),
         ];
     }
 
@@ -1716,10 +1716,9 @@ posted, stores each admin's values with their layout, and hands <code>render()</
 </tr>
 </tbody>
 </table>
-<p>Every field also takes an optional <code>description:</code> shown under its label, and <code>key:</code>, the name of a setting
-(<code>Class.property</code>) it follows. A field follows that setting's stored value, or its <code>default</code> when it has no <code>key</code>,
-until an admin changes it. Only values that differ from it are stored, so changing the setting later reaches every
-admin who left the field alone. A value that is not of the field's type, a choice the field does not offer, or the
+<p>Every field also takes an optional <code>description:</code> shown under its label. A placed widget uses each field's <code>default</code>
+until an admin changes it. Only values that differ from the default are stored, so changing the default in code later
+reaches every admin who left the field alone. A value that is not of the field's type, a choice the field does not offer, or the
 name of a field the widget no longer declares is dropped when the layout is saved, and ignored when it is rendered.</p>
 <h2 id="registering-it">Registering it</h2>
 <pre class="highlight"><code class="language-php">public function initAdmin()
@@ -1762,11 +1761,9 @@ id:</p>
 </tr>
 </tbody>
 </table>
-<p>A stats or chart item fetches its data (<code>addValue()</code>, <code>addValueByFreeQuery()</code>, <code>addDataset()</code>) only when it is on the
-viewer's dashboard and the viewer holds its permission. Code that builds a value by hand can ask the same question:</p>
-<pre class="highlight"><code class="language-php">if (service('dashboardContext')-&gt;shows(new ItemSettings(WidgetKind::Stats, 'openOrders'), 'shop.orders')) {
-    // run the query
-}</code></pre>
+<p>A stats or chart item stores the query of <code>addValue()</code>, <code>addValueByFreeQuery()</code> or <code>addDataset()</code> and runs it when
+its value or data is first read: only when the dashboard renders it, for a viewer who holds its permission. A widget
+of your own gets the same for free by doing its work in <code>render()</code>.</p>
 <p>To move one of these to a widget of your own, give the new widget the id it had (for example
 <code>stats:openOrders</code>), so saved layouts keep it in place, and stop adding the old item. Quick Links did the same: it
 keeps the id <code>cell:Bonfire\Dashboard\DashboardCells::quickLinks</code>, so installs whose <code>Dashboard.cells</code> still lists that
