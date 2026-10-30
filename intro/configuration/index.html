@@ -11,8 +11,10 @@
       
       
       
-        <link rel="prev" href="../view_components/">
+        <link rel="prev" href="../app_structure/">
       
+      
+        <link rel="next" href="../ai_agents/">
       
       
         
@@ -23,7 +25,7 @@
     
     
       
-        <title>Widgets - Bonfire 2 (beta)</title>
+        <title>Configuration Reference - Bonfire 2 (beta)</title>
       
     
     
@@ -48,8 +50,6 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-    
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
     
       <link rel="stylesheet" href="../../assets/css/codeigniter.css">
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#widgets" class="md-skip">
+        <a href="#configuration-reference" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Widgets
+              Configuration Reference
             
           </span>
         </div>
@@ -293,10 +293,20 @@
       
   
   
+    
   
   
+  
     
     
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -310,11 +320,11 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -335,7 +345,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -353,7 +363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../intro/installation/" class="md-nav__link">
+      <a href="../installation/" class="md-nav__link">
         
   
   
@@ -381,7 +391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../intro/philosophy/" class="md-nav__link">
+      <a href="../philosophy/" class="md-nav__link">
         
   
   
@@ -409,7 +419,63 @@
   
   
     <li class="md-nav__item">
-      <a href="../../intro/app_structure/" class="md-nav__link">
+      <a href="../request_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Bonfire Fits Into a Request
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../published_themes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why Themes Are Published Into Your App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app_structure/" class="md-nav__link">
         
   
   
@@ -434,10 +500,273 @@
                 
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Reference
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#config-files-or-the-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config files or the admin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonfire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonfire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Site
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#themes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Themes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Users
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recycler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recycler
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alerts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auth-authgroups-and-authtoken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auth, AuthGroups and AuthToken
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auth, AuthGroups and AuthToken">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authgroups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AuthGroups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authtoken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AuthToken
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
-      <a href="../../intro/changelog/" class="md-nav__link">
+      <a href="../ai_agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working With AI Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
         
   
   
@@ -476,6 +805,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -686,14 +1021,98 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modules/customizing_the_dashboard/" class="md-nav__link">
+      <a href="../../modules/users/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Customizing the Dashboard
+    Users
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/email/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Email Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
   
 
     
@@ -834,7 +1253,7 @@
   <span class="md-ellipsis">
     
   
-    Including Assets
+    Add CSS and JS to Your Site Theme
   
 
     
@@ -890,7 +1309,7 @@
   <span class="md-ellipsis">
     
   
-    Consent
+    Load Analytics Only After Visitors Consent
   
 
     
@@ -974,7 +1393,7 @@
   <span class="md-ellipsis">
     
   
-    Meta Info
+    Add a Custom Field to User Profiles
   
 
     
@@ -1027,8 +1446,6 @@
       
   
   
-    
-  
   
   
     
@@ -1058,19 +1475,23 @@
       
         
       
+        
+      
+        
+      
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../building_admin_modules/" class="md-nav__link ">
               
   
   
@@ -1094,7 +1515,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1114,7 +1535,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../actions/" class="md-nav__link">
+      <a href="../../building_admin_modules/tutorial_first_module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial: Build Your First Admin Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building_admin_modules/actions/" class="md-nav__link">
         
   
   
@@ -1142,7 +1591,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../creating_an_admin_module/" class="md-nav__link">
+      <a href="../../building_admin_modules/controllers_and_views/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Admin Controllers, Views and Themes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building_admin_modules/creating_an_admin_module/" class="md-nav__link">
         
   
   
@@ -1170,35 +1647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dashboard_cells/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Dashboard Cells
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dashboard_widgets/" class="md-nav__link">
+      <a href="../../building_admin_modules/dashboard_widgets/" class="md-nav__link">
         
   
   
@@ -1226,7 +1675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../filters/" class="md-nav__link">
+      <a href="../../building_admin_modules/filters/" class="md-nav__link">
         
   
   
@@ -1254,7 +1703,63 @@
   
   
     <li class="md-nav__item">
-      <a href="../recycler/" class="md-nav__link">
+      <a href="../../building_admin_modules/menus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Menus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building_admin_modules/permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building_admin_modules/recycler/" class="md-nav__link">
         
   
   
@@ -1282,7 +1787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resource_tabs/" class="md-nav__link">
+      <a href="../../building_admin_modules/resource_tabs/" class="md-nav__link">
         
   
   
@@ -1310,7 +1815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../search/" class="md-nav__link">
+      <a href="../../building_admin_modules/search/" class="md-nav__link">
         
   
   
@@ -1338,7 +1843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../view_components/" class="md-nav__link">
+      <a href="../../building_admin_modules/view_components/" class="md-nav__link">
         
   
   
@@ -1354,203 +1859,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Widgets
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Widgets
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#your-own-dashboard-widget" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Your own dashboard widget
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#statistic-widget" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Statistic widget
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Statistic widget">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fetching-data-only-when-it-is-shown" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fetching data only when it is shown
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#charts-widget" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Charts widget
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#log-activity-widget" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Log activity widget
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#charts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Charts
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#log-activity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Log activity
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1590,10 +1898,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
+  <a href="#config-files-or-the-admin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configuration
+        Config files or the admin
       
     </span>
   </a>
@@ -1601,10 +1909,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#your-own-dashboard-widget" class="md-nav__link">
+  <a href="#bonfire" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Your own dashboard widget
+        Bonfire
       
     </span>
   </a>
@@ -1612,83 +1920,110 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#statistic-widget" class="md-nav__link">
+  <a href="#site" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Statistic widget
+        Site
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Statistic widget">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#themes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Themes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Users
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recycler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recycler
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alerts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auth-authgroups-and-authtoken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auth, AuthGroups and AuthToken
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auth, AuthGroups and AuthToken">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fetching-data-only-when-it-is-shown" class="md-nav__link">
+  <a href="#auth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fetching data only when it is shown
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#charts-widget" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Charts widget
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#log-activity-widget" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Log activity widget
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#charts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Charts
+        Auth
       
     </span>
   </a>
@@ -1696,10 +2031,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#log-activity" class="md-nav__link">
+  <a href="#authgroups" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Log activity
+        AuthGroups
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authtoken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AuthToken
       
     </span>
   </a>
@@ -1754,10 +2100,10 @@
     
     
       <li class="md-path__item">
-        <a href="../" class="md-path__link">
+        <a href="../installation/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Building Admin Modules
+    Welcome
   </span>
 
         </a>
@@ -1776,7 +2122,7 @@
 
 
   
-    <a href="https://github.com/lonnieezell/Bonfire2/edit/develop/docs/building_admin_modules/widgets.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lonnieezell/Bonfire2/edit/develop/docs/intro/configuration.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1784,196 +2130,425 @@
   
 
 
-<h1 id="widgets">Widgets</h1>
-<p>Widgets are elements that display information on the dashboard. They are either a small informational card, or
-a chart of some sort.</p>
-<h2 id="configuration">Configuration</h2>
-<p>Some settings are available in the administration settings area. Each type of widget has its own specific settings,
-which can be used to specify which information is displayed for the widget, as well as whether it's animated, where
-labels are displayed, etc.</p>
-<hr />
-<h2 id="your-own-dashboard-widget">Your own dashboard widget</h2>
-<p>Implement <code>Bonfire\Dashboard\DashboardWidget</code> and register it with <code>service('dashboard')-&gt;register()</code>. See
-<a href="../dashboard_widgets/">Dashboard Widgets</a>, which also maps the stats, charts and cells below onto widgets.</p>
-<hr />
-<h2 id="statistic-widget">Statistic widget</h2>
-<p>The first widget is the statistics widget, which is just a counter with a shortcut that allows me to open the
-list of elements of a module. It could be used to display a year-to-day revenue at a glance, total number of users
-in the system, new users this month, or any other simple statistic.</p>
-<p>Adding a new widget is done by editing the <code>initAdmin</code> method of your <code>Module.php</code> file, similar to adding a menu:</p>
-<pre class="highlight"><code class="language-php">// Settings widgets stats on dashboard
-$widgets = service('widgets');
-$users = new UserModel();
-$statsItem = new StatsItem([
-    'bgColor' =&gt; 'bg-blue',
-    'title'   =&gt; 'Users',
-    'value'   =&gt; $users-&gt;countAll(),
-    'id'      =&gt; 'countAllUsers643',
-    'url'     =&gt; ADMIN_AREA . '/users',
-    'faIcon'  =&gt; 'fa fa-user',
-]);
-$widgets-&gt;widget("stats")-&gt;collection('stats')-&gt;addItem($statsItem);</code></pre>
-<p><strong>bgColor</strong></p>
-<p>bgColor represents the background color of the widget.
-The available options are:</p>
-<pre class="highlight"><code class="language-css">- bg-blue
-- bg-red
-- bg-orange
-- bg-light
-- bg-dark
-- bg-inverse
-- bg-indigo
-- bg-purple
-- bg-pink
-- bg-yellow
-- bg-green
-- bg-teal
-- bg-lime
-- bg-cyan
-- bg-white
-- bg-gray
-- bg-gray-dark</code></pre>
-<p><strong>title</strong></p>
-<p>The title of the widget displayed at the top left</p>
-<p><strong>value</strong></p>
-<p>The value of the widget displayed under the title: typically the total number of records.</p>
-<p>However, more elaborate data can be passed as a string, like an html table with tabulated data. See how that is done in <code>src/Users/Module.php</code> with a private method <code>buildTableUsersByGroup()</code>. <strong>value</strong> can also be passed to the stats item by a standard <code>addValue()</code> method, see the same file for an example.</p>
-<p><strong>id</strong></p>
-<p>A uniwue widget ID throughout application (make it descriptive and add extra symbols to make sure the uniqueness).</p>
-<p><strong>url</strong></p>
-<p>The address that displays the list of objects on your module. It will be associated with the word "view detail"</p>
-<p><strong>faIcon</strong></p>
-<p>The FontAwesome icon</p>
-<h3 id="fetching-data-only-when-it-is-shown">Fetching data only when it is shown</h3>
-<p><code>addValue()</code> and <code>addValueByFreeQuery()</code> store their query and run it when the value is first read. The dashboard
-reads it only for a widget in the viewer's layout whose permission they hold, so a stats item costs nothing on other
-pages. A <code>value</code> you pass directly runs whenever your module boots: build that in a widget's <code>render()</code> instead
-(see <a href="../dashboard_widgets/">Dashboard Widgets</a>).</p>
-<h2 id="configuration_1">Configuration</h2>
-<p>All settings are available in the admin settings area.</p>
-<p>In the administration settings area, you can also choose to:
-- Display the "View Detail" link</p>
-<hr />
-<h2 id="charts-widget">Charts widget</h2>
-<p>Adding a new chart widget is done in the <code>initAdmin</code> method of your <code>Module.php</code> file, similar to adding a menu:</p>
-<pre class="highlight"><code class="language-php">$statsItem = new ChartsItem([
-    'title'    =&gt; 'User classification by group',
-    'type'     =&gt; 'line',
-    'id'       =&gt; 'usersByGroupLine123',
-    'cssClass' =&gt; 'col-6',
-]);
-$statsItem-&gt;addDataset('auth_groups_users', 'group', 'user_id');
-$widgets-&gt;widget('charts')-&gt;collection('charts')-&gt;addItem($statsItem);</code></pre>
-<p><strong>title</strong></p>
-<p>The title of the chart displayed at the top center</p>
-<p><strong>type</strong></p>
-<p>The type of chart.
-The available options are:
-<pre class="highlight"><code>- line
-- bar
-- doughnut
-- pie
-- polarArea</code></pre></p>
-<p><strong>id</strong></p>
-<p>A uniwue widget ID throughout application (make it descriptive and add extra symbols to make sure the uniqueness).</p>
-<p><strong>cssClass</strong></p>
-<p>Set the width of the chart.
-Examples options are:
-<pre class="highlight"><code>- col-3
-- col-6
-- col-9
-- col-12</code></pre></p>
-<p><strong>addDataset(string $tableName, string $groupField, string $countField, string $selectMode = 'count')</strong></p>
-<p>Currently, only one dataset can be added to the chart. The required parameters are:</p>
-<ul>
-<li>Name of the table</li>
-<li>Grouping field</li>
-<li>Field to count</li>
-</ul>
-<p>It is possible to indicate a fourth parameter to choose the counting mode; the possible values are:</p>
-<pre class="highlight"><code class="language-php">- count
-- avg
-- max
-- min
-- sum</code></pre>
-<ul>
-<li>if indicate <strong>count</strong> then <strong>selectCount($field)</strong> is executed</li>
-<li>if indicate <strong>avg</strong> then <strong>selectAvg($field)</strong>  is executed</li>
-<li>if indicate <strong>max</strong> then <strong>selectMax($field)</strong>  is executed</li>
-<li>if indicate <strong>min</strong> then <strong>selectMin($field)</strong>  is executed</li>
-<li>if indicate <strong>sum</strong> then <strong>selectSum($field)</strong>  is executed</li>
-</ul>
-<hr />
-<h2 id="log-activity-widget">Log activity widget</h2>
-<p>The Log activity widget charts the last days up to today, one stacked bar per day's log file, split into Error,
-Warning, Info and Debug entries. CRITICAL, ALERT and EMERGENCY entries count as Error, and NOTICE entries count as
-Info. Each bar links to that log file, days without a log file show a thin line, and the headline counts the errors
-across the days shown.</p>
-<p>It is built in (<code>Bonfire\Tools\Widgets\LogActivity</code>, id <code>logs:logActivity</code>). Only users with the <code>logs.view</code>
-permission can add it to their dashboard, and the log files are only read when it is on the dashboard being shown.</p>
-<hr />
-<h2 id="configuration_2">Configuration</h2>
-<p>All settings are available in the administration settings area.</p>
-<p>Each type of widget has its own specific settings.</p>
-<hr />
-<h3 id="charts">Charts</h3>
-<p><strong><em>Line Chart</em></strong></p>
-<p>In the administration settings area, you can choose to:</p>
-<ul>
-<li>Display the title</li>
-<li>View the legend</li>
-<li>Choose the location of the legend</li>
-<li>Enable animation</li>
-<li>You can choose the value of the tension: Bezier curve tension of the line. Set to 0 to draw straightlines.</li>
-</ul>
-<hr />
-<p><strong><em>Bar Chart</em></strong></p>
-<p>In the administration settings area, you can choose to:</p>
-<ul>
-<li>Display the title</li>
-<li>View the legend</li>
-<li>Choose the location of the legend</li>
-<li>Enable animation</li>
-<li>Assign a predefined color scheme to fill the chart</li>
-</ul>
-<hr />
-<p><strong><em>Doughnut Chart</em></strong></p>
-<p>In the administration settings area, you can choose to:</p>
-<ul>
-<li>Display the title</li>
-<li>View the legend</li>
-<li>Choose the location of the legend</li>
-<li>Enable animation</li>
-<li>Assign a predefined color scheme to fill the chart</li>
-</ul>
-<hr />
-<p><strong><em>Pie Chart</em></strong></p>
-<p>In the administration settings area, you can choose to:</p>
-<ul>
-<li>Display the title</li>
-<li>View the legend</li>
-<li>Choose the location of the legend</li>
-<li>Enable animation</li>
-<li>Assign a predefined color scheme to fill the chart</li>
-</ul>
-<hr />
-<p><strong><em>Polar Area Chart</em></strong></p>
-<p>In the administration settings area, you can choose to:</p>
-<ul>
-<li>Display the title</li>
-<li>View the legend</li>
-<li>Choose the location of the legend</li>
-<li>Enable animation</li>
-<li>Assign a predefined color scheme to fill the chart</li>
-</ul>
-<hr />
-<h3 id="log-activity">Log activity</h3>
-<p>In the administration settings area, you can choose:</p>
-<ul>
-<li>How many of the last days to show, from 1 to 31 (7 by default). Every log file in those days is read on each
-  dashboard load.</li>
-<li>To hide Debug entries</li>
-</ul>
+<h1 id="configuration-reference">Configuration Reference</h1>
+<p><code>php spark bf:install</code> publishes a copy of each of these config classes to <code>app/Config/</code>, where you edit them. This
+page lists every key, its default and what it does.</p>
+<h2 id="config-files-or-the-admin">Config files or the admin</h2>
+<p>Keys marked <strong>Admin</strong> can also be changed in the admin under <strong>Settings</strong>. Bonfire reads them with <code>setting()</code>, which
+returns the value saved in the database before the value in the config file. Once an admin has saved one, editing the
+file has no effect until the stored value is removed with <code>setting()-&gt;forget()</code>. See <a href="../../building_sites/settings/">Settings</a>.</p>
+<h2 id="bonfire">Bonfire</h2>
+<p><code>app/Config/Bonfire.php</code> tells Bonfire where to find modules and how to order the admin menu.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$views</code></td>
+<td><code>['filter_list' =&gt; 'Bonfire\Views\_filter_list']</code></td>
+<td>Views Bonfire renders that you can replace. <code>filter_list</code> is the filter panel of admin lists (see <a href="../../building_admin_modules/filters/">Filters</a>).</td>
+</tr>
+<tr>
+<td><code>$appModules</code></td>
+<td><code>[]</code></td>
+<td>Folders of app modules, as namespace ⇒ path. Bonfire loads every folder in each path as a module. See <a href="../../building_admin_modules/creating_an_admin_module/#configuring-module-locations">Configuring Module Locations</a>.</td>
+</tr>
+<tr>
+<td><code>$packageModules</code></td>
+<td><code>[]</code></td>
+<td>Single modules in Composer packages, as namespace ⇒ the folder that holds <code>Module.php</code>. See <a href="../../building_admin_modules/creating_an_admin_module/#modules-in-composer-packages">Modules in Composer packages</a>.</td>
+</tr>
+<tr>
+<td><code>$menuWeights</code></td>
+<td><code>[]</code></td>
+<td>Admin menu order, as named route ⇒ weight. Larger weights appear later. An item that isn't listed keeps the weight its module gives it. Orders the Users menu, app module menus and the items inside Tools and Settings, but not Tools and Settings themselves.</td>
+</tr>
+<tr>
+<td><code>$breakingChangeStateFile</code></td>
+<td><code>null</code></td>
+<td>Where <code>spark notify:breaking-changes</code> records the last breaking change it reported. <code>null</code> means <code>writable/bonfire-breaking-changes.json</code>. See <a href="../installation/#updating-bonfire">Updating Bonfire</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>An example of <code>$menuWeights</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="nv">$menuWeights</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'user-list'</span>   <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">'custom-list'</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s1">'recycler'</span>    <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s1">'sys-info'</span>    <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+<span class="p">];</span>
+</code></pre></div>
+<h2 id="site">Site</h2>
+<p><code>app/Config/Site.php</code> holds site-wide values.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$perPage</code></td>
+<td><code>15</code></td>
+<td>Items per page in admin lists such as Users, the Recycler and the logs.</td>
+</tr>
+<tr>
+<td><code>$siteName</code></td>
+<td><code>'Bonfire'</code></td>
+<td>The site name, shown in the admin and used as the default page title. <strong>Admin</strong></td>
+</tr>
+<tr>
+<td><code>$siteOnline</code></td>
+<td><code>true</code></td>
+<td>When <code>false</code>, visitors are redirected to <code>/site-offline</code>. Only superadmins and groups with the <code>site.viewOffline</code> permission can still use the site. <strong>Admin</strong></td>
+</tr>
+<tr>
+<td><code>$siteOfflineView</code></td>
+<td><code>'Bonfire\Views\site_offline'</code></td>
+<td>The view <code>/site-offline</code> shows while the site is offline.</td>
+</tr>
+<tr>
+<td><code>$adminAccent</code></td>
+<td><code>'#D9622B'</code></td>
+<td>The admin theme's highlight color, as a <code>#rrggbb</code> hex string. See <a href="../../building_sites/settings/#admin-accent-color">Admin accent color</a>. <strong>Admin</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="themes">Themes</h2>
+<p><code>app/Config/Themes.php</code> says where themes and view components live. It isn't a <code>BaseConfig</code>, so <code>setting()</code> doesn't
+apply to it.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$collections</code></td>
+<td><code>[__DIR__ . '/../../themes/']</code></td>
+<td>Folders that hold themes. Each theme is a direct child folder of a collection.</td>
+</tr>
+<tr>
+<td><code>$componentsLookupPaths</code></td>
+<td><code>[APPPATH . 'Views/Components/']</code></td>
+<td>Fallback folders for a view component that the current theme doesn't define, checked in order. Each path must end with <code>/</code>. Use it for a component library shared by several themes.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="users">Users</h2>
+<p><code>app/Config/Users.php</code> covers avatars, the user form and extra user fields.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$useGravatar</code></td>
+<td><code>false</code></td>
+<td>Use gravatar.com for users who haven't uploaded an avatar. <strong>Admin</strong></td>
+</tr>
+<tr>
+<td><code>$gravatarDefault</code></td>
+<td><code>'blank'</code></td>
+<td>The Gravatar image for emails with no Gravatar: <code>mp</code>, <code>identicon</code>, <code>monsterid</code>, <code>wavatar</code>, <code>retro</code>, <code>robohash</code> or <code>blank</code>. <strong>Admin</strong></td>
+</tr>
+<tr>
+<td><code>$avatarNameBasis</code></td>
+<td><code>'name'</code></td>
+<td>What the letters on a generated avatar come from: <code>'name'</code> (initials, or the username when there's no first name) or <code>'username'</code>. <strong>Admin</strong></td>
+</tr>
+<tr>
+<td><code>$avatarPalette</code></td>
+<td>11 hex colors</td>
+<td>Background colors for generated avatars. Each user always gets the same one.</td>
+</tr>
+<tr>
+<td><code>$avatarDirectory</code></td>
+<td><code>'uploads/avatars'</code></td>
+<td>Where uploaded avatars are saved and linked from, relative to <code>FCPATH</code>.</td>
+</tr>
+<tr>
+<td><code>$avatarResize</code></td>
+<td><code>false</code></td>
+<td>Shrink uploaded avatars that are larger than <code>$avatarSize</code>. <strong>Admin</strong></td>
+</tr>
+<tr>
+<td><code>$avatarSize</code></td>
+<td><code>140</code></td>
+<td>The largest width or height in pixels of a resized avatar. <strong>Admin</strong></td>
+</tr>
+<tr>
+<td><code>$avatarResizeFloor</code></td>
+<td><code>32</code></td>
+<td>The smallest <code>$avatarSize</code> allowed.</td>
+</tr>
+<tr>
+<td><code>$validation</code></td>
+<td>rules for <code>id</code>, <code>email</code>, <code>username</code>, <code>first_name</code>, <code>last_name</code>, <code>groups.*</code></td>
+<td>Validation rules for saving a user in the admin. Rules for the fields in <code>$metaFields</code> are added to them.</td>
+</tr>
+<tr>
+<td><code>$metaFields</code></td>
+<td>one example field, <code>blog</code></td>
+<td>Extra fields on a user's profile, grouped by fieldset legend. See <a href="../../modules/meta_info/#defining-meta-fields">Defining Meta Fields</a>.</td>
+</tr>
+<tr>
+<td><code>$includeMetaFieldsInSearch</code></td>
+<td><code>['blog']</code></td>
+<td>Names of <code>$metaFields</code> fields that the admin search looks in. Older published configs spell it <code>$includeMetaFieldsInSearech</code>, which still works.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="consent">Consent</h2>
+<p><code>app/Config/Consent.php</code> controls the cookie consent banner. The <a href="../../modules/consent/#configuration">Consent</a> page
+describes each key in more detail. All keys except the three views can be changed under <strong>Settings → Consent</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$requireConsent</code></td>
+<td><code>false</code></td>
+<td>Ask front-end visitors to opt in to each consent type. When <code>false</code>, no banner shows and the consent helper always returns <code>true</code>. <strong>Admin</strong></td>
+</tr>
+<tr>
+<td><code>$consentLength</code></td>
+<td><code>180</code></td>
+<td>Days before a visitor is asked again. <strong>Admin</strong></td>
+</tr>
+<tr>
+<td><code>$consentForm</code></td>
+<td><code>'Bonfire\Consent\Views\consent_form'</code></td>
+<td>The view of the consent banner.</td>
+</tr>
+<tr>
+<td><code>$consentFormStyles</code></td>
+<td><code>'Bonfire\Consent\Views\consent_styles'</code></td>
+<td>The view with the banner's CSS, added to each page.</td>
+</tr>
+<tr>
+<td><code>$consentFormScripts</code></td>
+<td><code>'Bonfire\Consent\Views\consent_scripts'</code></td>
+<td>The view with the banner's JavaScript, added to each page.</td>
+</tr>
+<tr>
+<td><code>$policyUrl</code></td>
+<td><code>'privacy'</code></td>
+<td>The URL of your cookie policy, full or relative. <strong>Admin</strong></td>
+</tr>
+<tr>
+<td><code>$policyTitle</code></td>
+<td><code>'Cookie Policy'</code></td>
+<td>The link text of the cookie policy link, which replaces <code>{policy_url}</code> in <code>$consentMessage</code>. <strong>Admin</strong></td>
+</tr>
+<tr>
+<td><code>$consentMessage</code></td>
+<td>a short cookie notice</td>
+<td>The message at the top of the banner. <strong>Admin</strong></td>
+</tr>
+<tr>
+<td><code>$consents</code></td>
+<td><code>required</code>, <code>performance</code>, <code>targeting</code></td>
+<td>The consent types visitors accept or reject, keyed by alias, each with a <code>name</code> and <code>desc</code>. <strong>Admin</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="dashboard">Dashboard</h2>
+<p><code>app/Config/Dashboard.php</code> sets the dashboard everyone sees until they customize it.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$layout</code></td>
+<td>quick links, a Users section, a Monitoring section</td>
+<td>The site default layout. See <a href="../../modules/dashboard/#setting-it-in-config">Setting it in config</a>. A default saved from the dashboard replaces it.</td>
+</tr>
+<tr>
+<td><code>$cells</code></td>
+<td>Bonfire's stats, logs and charts cells</td>
+<td>Legacy view cells, shown in order only when <code>$layout</code> is <code>null</code>. See <a href="../../building_admin_modules/dashboard_widgets/#legacy-view-cells">Legacy: view cells</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="recycler">Recycler</h2>
+<p><code>app/Config/Recycler.php</code> sets up the Recycler. See <a href="../../building_admin_modules/recycler/">The Recycler</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$defaultResource</code></td>
+<td><code>'users'</code></td>
+<td>The alias of the resource the Recycler opens on.</td>
+</tr>
+<tr>
+<td><code>$resources</code></td>
+<td><code>[]</code></td>
+<td>Resources registered by the app, keyed by alias, each with a <code>label</code>, <code>model</code> and <code>columns</code>. An entry with a module's alias replaces how that module's resource is shown.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="assets">Assets</h2>
+<p><code>app/Config/Assets.php</code> controls asset URLs and cache busting. The <a href="../../modules/assets/#configuration">Asset Management</a>
+page describes each key in more detail.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$bustingType</code></td>
+<td><code>'file'</code></td>
+<td>How the cache-busting string is made: <code>'file'</code> uses the file's modified time, <code>'version'</code> uses <code>$versions</code> in production and the current time elsewhere.</td>
+</tr>
+<tr>
+<td><code>$separator</code></td>
+<td><code>'~~'</code></td>
+<td>The URL-safe characters put between the file name and the cache-busting string. Must not occur in your asset file names.</td>
+</tr>
+<tr>
+<td><code>$versions</code></td>
+<td><code>['css' =&gt; '1.0', 'js' =&gt; '1.0']</code></td>
+<td>Versions used when <code>$bustingType</code> is <code>'version'</code>.</td>
+</tr>
+<tr>
+<td><code>$folders</code></td>
+<td><code>app</code>, <code>admin</code>, <code>auth</code> themes and <code>other</code> ⇒ <code>VENDORPATH</code></td>
+<td>Folders that can serve assets, keyed by the first segment of the asset URL.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="alerts">Alerts</h2>
+<p><code>app/Config/Alerts.php</code> extends the config of <a href="https://github.com/tattersoftware/codeigniter4-alerts">Tatter\Alerts</a>,
+which has the remaining keys. See <a href="../../building_sites/alerts/">Alerts</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$template</code></td>
+<td><code>'Bonfire\Views\_alerts.php'</code></td>
+<td>The view that renders alerts.</td>
+</tr>
+<tr>
+<td><code>$classes</code></td>
+<td>Bootstrap types, log levels, <code>messages</code> and <code>errors</code></td>
+<td>Session keys that show as alerts, each mapped to the Bootstrap alert class it uses.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="auth-authgroups-and-authtoken">Auth, AuthGroups and AuthToken</h2>
+<p>These three files configure <a href="https://shield.codeigniter.com">Shield</a>, which handles login, groups and permissions.
+Shield's documentation covers their keys. This section lists only what Bonfire adds or changes.</p>
+<h3 id="auth">Auth</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Bonfire's default</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$views</code></td>
+<td>Bonfire's views</td>
+<td>Bonfire's views replace Shield's for login, register, email 2FA, email activation and magic links. <code>layout</code> is the layout of the <code>auth</code> theme they extend, <code>master</code>. <code>email_layout</code> is Bonfire's addition: the layout the magic link email extends. See <a href="../../modules/auth/#views">Views</a>.</td>
+</tr>
+<tr>
+<td><code>$actions</code></td>
+<td><code>['register' =&gt; null, 'login' =&gt; null]</code></td>
+<td>Set them to Bonfire's <code>Bonfire\Auth\Actions\EmailActivator</code> and <code>Bonfire\Auth\Actions\Email2FA</code>, which use Bonfire's views. <strong>Admin</strong></td>
+</tr>
+<tr>
+<td><code>$sessionConfig</code></td>
+<td><code>'field' =&gt; 'logged_in'</code></td>
+<td>Bonfire stores the logged-in user under the <code>logged_in</code> session key, where Shield uses <code>user</code>. <code>allowRemembering</code> and <code>rememberLength</code> are <strong>Admin</strong>.</td>
+</tr>
+<tr>
+<td><code>$personalFields</code></td>
+<td><code>['first_name', 'last_name']</code></td>
+<td>User fields that a password may not resemble.</td>
+</tr>
+<tr>
+<td><code>$userProvider</code></td>
+<td><code>Bonfire\Users\Models\UserModel</code></td>
+<td>Bonfire's user model.</td>
+</tr>
+</tbody>
+</table>
+<p><code>$allowRegistration</code>, <code>$minimumPasswordLength</code> and <code>$passwordValidators</code> can also be changed under
+<strong>Settings → Users</strong>.</p>
+<p>Bonfire also changes <code>loginRedirect()</code>: users with the <code>admin.access</code> permission go to the admin area after login,
+whatever <code>$redirects['login']</code> says.</p>
+<h3 id="authgroups">AuthGroups</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Bonfire's default</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$groups</code>, <code>$permissions</code>, <code>$matrix</code></td>
+<td>Bonfire's groups and permissions</td>
+<td>See <a href="../../building_admin_modules/permissions/#bonfires-groups-and-permissions">Bonfire's groups and permissions</a>. Once an admin edits a group's permissions, the matrix is stored in the database and <code>$matrix</code> is ignored.</td>
+</tr>
+<tr>
+<td><code>$defaultGroup</code></td>
+<td><code>'user'</code></td>
+<td>The group new users join. <strong>Admin</strong></td>
+</tr>
+<tr>
+<td><code>$moduleGrants</code></td>
+<td><code>[]</code></td>
+<td>Bonfire's addition: permissions modules grant to groups by default. See <a href="../../building_admin_modules/permissions/#default-grants">Default grants</a>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="authtoken">AuthToken</h3>
+<p>Bonfire changes nothing; every key is Shield's.</p>
 
 
 
@@ -2009,7 +2584,7 @@ permission can add it to their dashboard, and the log files are only read when i
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../view_components/" class="md-footer__link md-footer__link--prev" aria-label="Previous: View Components">
+          <a href="../app_structure/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Bonfire Application Structure">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2019,11 +2594,27 @@ permission can add it to their dashboard, and the log files are only read when i
                 Previous
               </span>
               <div class="md-ellipsis">
-                View Components
+                Bonfire Application Structure
               </div>
             </div>
           </a>
         
+        
+          
+          <a href="../ai_agents/" class="md-footer__link md-footer__link--next" aria-label="Next: Working With AI Agents">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Working With AI Agents
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
         
       </nav>
     
@@ -2077,10 +2668,6 @@ permission can add it to their dashboard, and the log files are only read when i
     
     
       <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-      
-        <script src="../../assets/js/hljs.js"></script>
       
     
   </body>

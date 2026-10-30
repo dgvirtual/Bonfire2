@@ -51,8 +51,6 @@
       
     
     
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
-    
       <link rel="stylesheet" href="../../assets/css/codeigniter.css">
     
       <link rel="stylesheet" href="../../assets/css/codeigniter_dark_mode.css">
@@ -308,6 +306,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -411,6 +417,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../intro/request_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Bonfire Fits Into a Request
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/published_themes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why Themes Are Published Into Your App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../intro/app_structure/" class="md-nav__link">
         
   
@@ -419,6 +481,62 @@
     
   
     Bonfire Application Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/ai_agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working With AI Agents
   
 
     
@@ -480,6 +598,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -638,6 +762,95 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#bonfires-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonfire's Defaults
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bonfire&#39;s Defaults">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-a-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changing a Default
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changing a Default">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-the-settings-users-screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On the Settings → Users screen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-appconfigauthphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In app/Config/Auth.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-setting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With setting()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#extending-the-authentication-system" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -665,6 +878,56 @@
     <span class="md-ellipsis">
       
         Controllers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auth-theme-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auth Theme Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auth Theme Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#x-auth-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &lt;x-auth-card&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x-unsplash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &lt;x-unsplash&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-them-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using them together
       
     </span>
   </a>
@@ -776,14 +1039,98 @@
   
   
     <li class="md-nav__item">
-      <a href="../customizing_the_dashboard/" class="md-nav__link">
+      <a href="../users/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Customizing the Dashboard
+    Users
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../email/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Email Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
   
 
     
@@ -924,7 +1271,7 @@
   <span class="md-ellipsis">
     
   
-    Including Assets
+    Add CSS and JS to Your Site Theme
   
 
     
@@ -980,7 +1327,7 @@
   <span class="md-ellipsis">
     
   
-    Consent
+    Load Analytics Only After Visitors Consent
   
 
     
@@ -1064,7 +1411,7 @@
   <span class="md-ellipsis">
     
   
-    Meta Info
+    Add a Custom Field to User Profiles
   
 
     
@@ -1146,6 +1493,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1202,6 +1553,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../building_admin_modules/tutorial_first_module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial: Build Your First Admin Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../building_admin_modules/actions/" class="md-nav__link">
         
   
@@ -1230,14 +1609,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../building_admin_modules/creating_an_admin_module/" class="md-nav__link">
+      <a href="../../building_admin_modules/controllers_and_views/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Creating an Admin Module
+    Admin Controllers, Views and Themes
   
 
     
@@ -1258,14 +1637,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../building_admin_modules/dashboard_cells/" class="md-nav__link">
+      <a href="../../building_admin_modules/creating_an_admin_module/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Dashboard Cells
+    Creating an Admin Module
   
 
     
@@ -1322,6 +1701,62 @@
     
   
     Filters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building_admin_modules/menus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Menus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building_admin_modules/permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Permissions
   
 
     
@@ -1447,34 +1882,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../building_admin_modules/widgets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Widgets
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1509,6 +1916,95 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#bonfires-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonfire's Defaults
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bonfire&#39;s Defaults">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-a-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changing a Default
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changing a Default">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-the-settings-users-screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        On the Settings → Users screen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-appconfigauthphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In app/Config/Auth.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-setting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        With setting()
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#extending-the-authentication-system" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1536,6 +2032,56 @@
     <span class="md-ellipsis">
       
         Controllers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auth-theme-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Auth Theme Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Auth Theme Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#x-auth-card" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &lt;x-auth-card&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x-unsplash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        &lt;x-unsplash&gt;
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-them-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Using them together
       
     </span>
   </a>
@@ -1622,41 +2168,239 @@
 
 <h1 id="authentication-and-authorization">Authentication and Authorization</h1>
 <p>All of the authentication and authorization is handled by CodeIgniter's <a href="https://shield.codeigniter.com">Shield</a> library. This library provides a flexible and powerful system for managing users, groups, and permissions. Please refer to the <a href="https://shield.codeigniter.com">Shield documentation</a> for more information on how to use it.</p>
+<p>Bonfire ships its own <code>Auth</code> config, <code>Bonfire\Auth\Config\Auth</code>, which extends Shield's. This page lists the defaults
+that decide how login and registration behave, and the components the auth pages are built from. For every other key,
+see the <a href="../../intro/configuration/#auth">Configuration Reference</a>.</p>
+<h2 id="bonfires-defaults">Bonfire's Defaults</h2>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Effect</th>
+<th>Change it in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$allowRegistration</code></td>
+<td><code>true</code></td>
+<td>Visitors can create their own account at <code>/register</code>, and the login page links to it. When <code>false</code>, the register page sends visitors back with an error and only an admin can add users.</td>
+<td><strong>Settings → Users</strong> or code</td>
+</tr>
+<tr>
+<td><code>$allowMagicLinkLogins</code></td>
+<td><code>true</code></td>
+<td>Users who forgot their password can ask for a one-time login link by email at <code>/login/magic-link</code>. The login page links to it. When <code>false</code>, the link is hidden and the magic link pages refuse requests.</td>
+<td>Code</td>
+</tr>
+<tr>
+<td><code>$magicLinkLifetime</code></td>
+<td><code>HOUR</code></td>
+<td>How long, in seconds, a magic link works.</td>
+<td>Code</td>
+</tr>
+<tr>
+<td><code>$actions['register']</code></td>
+<td><code>null</code></td>
+<td>Nothing happens after registration; the new user is logged in. See <a href="#actions">Actions</a>.</td>
+<td><strong>Settings → Users</strong> or code</td>
+</tr>
+<tr>
+<td><code>$actions['login']</code></td>
+<td><code>null</code></td>
+<td>Nothing happens after login. See <a href="#actions">Actions</a>.</td>
+<td><strong>Settings → Users</strong> or code</td>
+</tr>
+<tr>
+<td><code>$redirects</code></td>
+<td>See <a href="#redirects">Redirects</a></td>
+<td>Where users go after login, logout, registration and denied access.</td>
+<td>Code</td>
+</tr>
+</tbody>
+</table>
+<h3 id="redirects">Redirects</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>When it's used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>login</code></td>
+<td><code>'/'</code></td>
+<td>After a successful login.</td>
+</tr>
+<tr>
+<td><code>logout</code></td>
+<td><code>'login'</code></td>
+<td>After logout.</td>
+</tr>
+<tr>
+<td><code>register</code></td>
+<td><code>'/'</code></td>
+<td>After registration, and after email activation.</td>
+</tr>
+<tr>
+<td><code>force_reset</code></td>
+<td><code>'/'</code></td>
+<td>When a user's account is flagged for a forced password reset.</td>
+</tr>
+<tr>
+<td><code>permission_denied</code></td>
+<td><code>'/'</code></td>
+<td>When a user lacks a permission a route filter requires.</td>
+</tr>
+<tr>
+<td><code>group_denied</code></td>
+<td><code>'/'</code></td>
+<td>When a user isn't in a group a route filter requires.</td>
+</tr>
+</tbody>
+</table>
+<p>Each value can be an absolute URL (<code>https://example.com</code>), a named route, or a URI path (<code>account</code>).</p>
+<p>Users with the <code>admin.access</code> permission ignore <code>login</code>: after login they always go to the admin area. Everyone else
+goes back to the page they were on when they were asked to log in, or to <code>login</code> if there wasn't one. To change this,
+override <code>loginRedirect()</code> in your <code>app/Config/Auth.php</code>.</p>
+<h3 id="actions">Actions</h3>
+<p>An action is an extra step Shield runs after login or registration, before the user gets in. Both are off by default.
+Bonfire has its own version of each of Shield's two email actions. They render their pages with the <code>Auth</code> theme, so use
+them instead of Shield's.</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Class</th>
+<th>What the user sees</th>
+<th>Settings → Users switch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>register</code></td>
+<td><code>Bonfire\Auth\Actions\EmailActivator</code></td>
+<td>After registering, they get a code by email and must enter it to activate their account.</td>
+<td>Force email verification</td>
+</tr>
+<tr>
+<td><code>login</code></td>
+<td><code>Bonfire\Auth\Actions\Email2FA</code></td>
+<td>After entering their password, they get a code by email and must enter it to finish logging in.</td>
+<td>Force 2FA after login</td>
+</tr>
+</tbody>
+</table>
+<p>Both actions send email, so set up <a href="../email/">Email</a> first.</p>
+<p>The switches recognize only Bonfire's classes. If you set Shield's classes, or your own, in code, the switch shows as off,
+and saving the screen replaces your class with <code>null</code>.</p>
+<h2 id="changing-a-default">Changing a Default</h2>
+<p>You can change a default in three places. A value stored in the database wins over the config file.</p>
+<h3 id="on-the-settings-users-screen">On the Settings → Users screen</h3>
+<p>Admins with the <code>users.settings</code> permission can change registration, the two actions, remember-me and the password
+rules under <strong>Settings → Users</strong>. The screen saves each value with <code>setting()</code>, so it is stored in the database.</p>
+<h3 id="in-appconfigauthphp">In <code>app/Config/Auth.php</code></h3>
+<p>The installer publishes <code>app/Config/Auth.php</code>, a copy of Bonfire's <code>Auth</code> config with every key in it. Edit a value
+there to change the default for every environment. For example, to turn off magic links and send users to an
+<code>account</code> page after login and registration:</p>
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="nx">bool</span> <span class="nv">$allowMagicLinkLogins</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">array</span> <span class="nv">$redirects</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'register'</span>          <span class="o">=&gt;</span> <span class="s1">'account'</span><span class="p">,</span>
+    <span class="s1">'login'</span>             <span class="o">=&gt;</span> <span class="s1">'account'</span><span class="p">,</span>
+    <span class="s1">'logout'</span>            <span class="o">=&gt;</span> <span class="s1">'login'</span><span class="p">,</span>
+    <span class="s1">'force_reset'</span>       <span class="o">=&gt;</span> <span class="s1">'/'</span><span class="p">,</span>
+    <span class="s1">'permission_denied'</span> <span class="o">=&gt;</span> <span class="s1">'/'</span><span class="p">,</span>
+    <span class="s1">'group_denied'</span>      <span class="o">=&gt;</span> <span class="s1">'/'</span><span class="p">,</span>
+<span class="p">];</span>
+</code></pre></div>
+<p>Keep every key of <code>$redirects</code>, even the ones you don't change. Bonfire reads each one, so a missing key causes an
+error.</p>
+<h3 id="with-setting">With <code>setting()</code></h3>
+<p>To change a value from code at runtime, such as in a migration or a seeder, store it with <code>setting()</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">setting</span><span class="p">(</span><span class="s1">'Auth.allowMagicLinkLogins'</span><span class="p">,</span> <span class="k">false</span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Once a key is stored in the database, Bonfire reads it from there and ignores <code>app/Config/Auth.php</code>. This happens
+the first time an admin saves <strong>Settings → Users</strong>, which stores <code>allowRegistration</code> and <code>actions</code>. Changing those
+keys in the config file afterwards has no effect. Remove the stored value to go back to the config file:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">setting</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">forget</span><span class="p">(</span><span class="s1">'Auth.allowRegistration'</span><span class="p">);</span>
+</code></pre></div>
+</div>
+<p>See <a href="../../building_sites/settings/">Settings</a> for how stored settings work.</p>
 <h2 id="extending-the-authentication-system">Extending the Authentication System</h2>
 <p>While none of the functionality has been overridden, the views and controllers have been extended to integrate with Bonfire's theme system. This allows you to easily customize the look and feel of the authentication system to match the rest of your application.</p>
 <h3 id="views">Views</h3>
 <p>The authentication pages are styled via the <code>auth</code> theme. Much of the look and feel can be modified by modifying the theme itself. If you need to modify the forms or other elements, you can specify the view that should be used in the <code>Auth</code> configuration file and then create your own views.</p>
-<pre class="highlight"><code class="language-php">public array $views = [
-    'layout'                      =&gt; 'master',
-    'email_layout'                =&gt; '\Bonfire\Views\email',
-    'login'                       =&gt; '\Bonfire\Views\Auth\login',
-    'register'                    =&gt; '\Bonfire\Views\Auth\register',
-    'forgotPassword'              =&gt; '\CodeIgniter\Shield\Views\forgot_password',
-    'resetPassword'               =&gt; '\CodeIgniter\Shield\Views\reset_password',
-    'action_email_2fa'            =&gt; '\Bonfire\Views\Auth\email_2fa_show',
-    'action_email_2fa_verify'     =&gt; '\Bonfire\Views\Auth\email_2fa_verify',
-    'action_email_2fa_email'      =&gt; '\CodeIgniter\Shield\Views\Email\email_2fa_email',
-    'action_email_activate_show'  =&gt; '\Bonfire\Views\Auth\email_activate_show',
-    'action_email_activate_email' =&gt; '\CodeIgniter\Shield\Views\Email\email_activate_email',
-    'magic-link-login'            =&gt; '\Bonfire\Views\Auth\magic_link_form',
-    'magic-link-message'          =&gt; '\Bonfire\Views\Auth\magic_link_message',
-    'magic-link-email'            =&gt; '\Bonfire\Views\Auth\magic_link_email',
-];</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">public</span> <span class="k">array</span> <span class="nv">$views</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'layout'</span>                      <span class="o">=&gt;</span> <span class="s1">'master'</span><span class="p">,</span>
+    <span class="s1">'email_layout'</span>                <span class="o">=&gt;</span> <span class="s1">'\Bonfire\Views\email'</span><span class="p">,</span>
+    <span class="s1">'login'</span>                       <span class="o">=&gt;</span> <span class="s1">'\Bonfire\Views\Auth\login'</span><span class="p">,</span>
+    <span class="s1">'register'</span>                    <span class="o">=&gt;</span> <span class="s1">'\Bonfire\Views\Auth\register'</span><span class="p">,</span>
+    <span class="s1">'forgotPassword'</span>              <span class="o">=&gt;</span> <span class="s1">'\CodeIgniter\Shield\Views\forgot_password'</span><span class="p">,</span>
+    <span class="s1">'resetPassword'</span>               <span class="o">=&gt;</span> <span class="s1">'\CodeIgniter\Shield\Views\reset_password'</span><span class="p">,</span>
+    <span class="s1">'action_email_2fa'</span>            <span class="o">=&gt;</span> <span class="s1">'\Bonfire\Views\Auth\email_2fa_show'</span><span class="p">,</span>
+    <span class="s1">'action_email_2fa_verify'</span>     <span class="o">=&gt;</span> <span class="s1">'\Bonfire\Views\Auth\email_2fa_verify'</span><span class="p">,</span>
+    <span class="s1">'action_email_2fa_email'</span>      <span class="o">=&gt;</span> <span class="s1">'\CodeIgniter\Shield\Views\Email\email_2fa_email'</span><span class="p">,</span>
+    <span class="s1">'action_email_activate_show'</span>  <span class="o">=&gt;</span> <span class="s1">'\Bonfire\Views\Auth\email_activate_show'</span><span class="p">,</span>
+    <span class="s1">'action_email_activate_email'</span> <span class="o">=&gt;</span> <span class="s1">'\CodeIgniter\Shield\Views\Email\email_activate_email'</span><span class="p">,</span>
+    <span class="s1">'magic-link-login'</span>            <span class="o">=&gt;</span> <span class="s1">'\Bonfire\Views\Auth\magic_link_form'</span><span class="p">,</span>
+    <span class="s1">'magic-link-message'</span>          <span class="o">=&gt;</span> <span class="s1">'\Bonfire\Views\Auth\magic_link_message'</span><span class="p">,</span>
+    <span class="s1">'magic-link-email'</span>            <span class="o">=&gt;</span> <span class="s1">'\Bonfire\Views\Auth\magic_link_email'</span><span class="p">,</span>
+<span class="p">];</span>
+</code></pre></div>
 <p>You can change the main layout that is used for the authentication pages by changing the <code>layout</code> value. You can change the layout used for emails by changing the <code>email_layout</code> value.</p>
 <h3 id="controllers">Controllers</h3>
 <p>When you need to modify the behavior of the authentication system, you should create a new controller and extend the existing controller. You should then override only the methods that you need to modify. If possible, you should do your changes and call the parent method to ensure that any security fixes that are discovered later are not lost to your application due to your overrides.</p>
-<pre class="highlight"><code class="language-php">namespace App\Controllers\Auth;
+<div class="highlight"><pre><span></span><code><span class="k">namespace</span> <span class="nx">App\Controllers\Auth</span><span class="p">;</span>
 
-use Bonfire\Auth\Controllers\LoginController as BonfireLoginController;
+<span class="k">use</span> <span class="nx">Bonfire\Auth\Controllers\LoginController</span> <span class="k">as</span> <span class="nx">BonfireLoginController</span><span class="p">;</span>
 
-class LoginController extends BonfireLoginController
-{
-    // ... your custom methods here
-}</code></pre>
+<span class="k">class</span> <span class="nc">LoginController</span> <span class="k">extends</span> <span class="nx">BonfireLoginController</span>
+<span class="p">{</span>
+    <span class="c1">// ... your custom methods here</span>
+<span class="p">}</span>
+</code></pre></div>
 <div class="admonition info note">
 <p class="admonition-title">Info</p>
 <p>You should always extend the Bonfire controller, not the Shield controller. This will ensure that the theme system is used properly, as Bonfire's auth controllers extend the view methods to use the theme system.</p>
 </div>
+<h2 id="auth-theme-components">Auth Theme Components</h2>
+<p>The <code>Auth</code> theme has two <a href="../../building_sites/components/">view components</a> of its own. Bonfire's login, register,
+email 2FA, email activation and magic link views are built from them. The installer publishes them to
+<code>themes/Auth/Components/</code>, so you can edit them there to change every auth page at once.</p>
+<h3 id="x-auth-card"><code>&lt;x-auth-card&gt;</code></h3>
+<p>A Bootstrap card for an auth form. It is slightly transparent, so the page background shows through, and it is
+5 columns wide on large screens and 7 on medium ones. It has no attributes; put the card's content in its slot.</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">x-auth-card</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card-body"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h5</span> <span class="na">class</span><span class="o">=</span><span class="s">"card-title mb-5"</span><span class="p">&gt;</span>Log in<span class="p">&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span>
+        <span class="cm">&lt;!-- form --&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">x-auth-card</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="x-unsplash"><code>&lt;x-unsplash&gt;</code></h3>
+<p>A full-screen photo behind the page content. It has no attributes; put the page content in its slot. It loads a random
+photo from <a href="https://picsum.photos/">Picsum</a> and shows an "Image by Picsum" credit in the bottom-right
+corner. Despite the component's name, the photo doesn't come from Unsplash.</p>
+<p>Because the photo comes from an external site, every visitor's browser requests it from <code>picsum.photos</code>. To use your own
+image, or a plain background, edit <code>themes/Auth/Components/unsplash.php</code>.</p>
+<h3 id="using-them-together">Using them together</h3>
+<p>Bonfire's auth views put the card inside the background, in a centered container:</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">x-unsplash</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"container d-flex justify-content-center p-5"</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">x-auth-card</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"card-body"</span><span class="p">&gt;</span>
+                <span class="cm">&lt;!-- form --&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">x-auth-card</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">x-unsplash</span><span class="p">&gt;</span>
+</code></pre></div>
 
 
 
@@ -1776,10 +2520,6 @@ class LoginController extends BonfireLoginController
     
     
       <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-      
-        <script src="../../assets/js/hljs.js"></script>
       
     
   </body>

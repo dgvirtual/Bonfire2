@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../dashboard/">
+        <link rel="prev" href="../settings/">
       
       
-        <link rel="next" href="../../building_sites/">
+        <link rel="next" href="../tools/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Customizing the Dashboard - Bonfire 2 (beta)</title>
+        <title>Email Settings - Bonfire 2 (beta)</title>
       
     
     
@@ -50,8 +50,6 @@
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
-    
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
     
       <link rel="stylesheet" href="../../assets/css/codeigniter.css">
     
@@ -82,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#customizing-the-dashboard" class="md-skip">
+        <a href="#email-settings" class="md-skip">
           Skip to content
         </a>
       
@@ -118,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Customizing the Dashboard
+              Email Settings
             
           </span>
         </div>
@@ -308,6 +306,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -411,6 +417,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../intro/request_flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Bonfire Fits Into a Request
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/published_themes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why Themes Are Published Into Your App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../intro/app_structure/" class="md-nav__link">
         
   
@@ -419,6 +481,62 @@
     
   
     Bonfire Application Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../intro/ai_agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working With AI Agents
   
 
     
@@ -480,6 +598,12 @@
       
         
           
+        
+      
+        
+      
+        
+      
         
       
         
@@ -687,6 +811,62 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../users/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Users
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -706,7 +886,7 @@
   <span class="md-ellipsis">
     
   
-    Customizing the Dashboard
+    Email Settings
   
 
     
@@ -724,7 +904,7 @@
   <span class="md-ellipsis">
     
   
-    Customizing the Dashboard
+    Email Settings
   
 
     
@@ -750,10 +930,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#edit-mode" class="md-nav__link">
+  <a href="#set-up-smtp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Edit mode
+        Set up SMTP
       
     </span>
   </a>
@@ -761,79 +941,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sections" class="md-nav__link">
+  <a href="#settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sections
+        Settings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#sizes" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#delivery" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sizes
+        Delivery
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#widget-settings" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#smtp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Widget settings
+        SMTP
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#the-widget-library" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The widget library
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#keyboard-and-screen-readers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Keyboard and screen readers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-site-default" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The site default
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#which-widgets-are-available" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Which widgets are available
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -841,6 +994,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -973,7 +1154,7 @@
   <span class="md-ellipsis">
     
   
-    Including Assets
+    Add CSS and JS to Your Site Theme
   
 
     
@@ -1029,7 +1210,7 @@
   <span class="md-ellipsis">
     
   
-    Consent
+    Load Analytics Only After Visitors Consent
   
 
     
@@ -1113,7 +1294,7 @@
   <span class="md-ellipsis">
     
   
-    Meta Info
+    Add a Custom Field to User Profiles
   
 
     
@@ -1195,6 +1376,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1251,6 +1436,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../building_admin_modules/tutorial_first_module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial: Build Your First Admin Module
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../building_admin_modules/actions/" class="md-nav__link">
         
   
@@ -1279,14 +1492,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../building_admin_modules/creating_an_admin_module/" class="md-nav__link">
+      <a href="../../building_admin_modules/controllers_and_views/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Creating an Admin Module
+    Admin Controllers, Views and Themes
   
 
     
@@ -1307,14 +1520,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../building_admin_modules/dashboard_cells/" class="md-nav__link">
+      <a href="../../building_admin_modules/creating_an_admin_module/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Dashboard Cells
+    Creating an Admin Module
   
 
     
@@ -1371,6 +1584,62 @@
     
   
     Filters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building_admin_modules/menus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Menus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../building_admin_modules/permissions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Permissions
   
 
     
@@ -1496,34 +1765,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../building_admin_modules/widgets/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Widgets
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1558,10 +1799,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#edit-mode" class="md-nav__link">
+  <a href="#set-up-smtp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Edit mode
+        Set up SMTP
       
     </span>
   </a>
@@ -1569,79 +1810,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sections" class="md-nav__link">
+  <a href="#settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sections
+        Settings
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#sizes" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#delivery" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sizes
+        Delivery
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#widget-settings" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#smtp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Widget settings
+        SMTP
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#the-widget-library" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The widget library
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#keyboard-and-screen-readers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Keyboard and screen readers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-site-default" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The site default
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#which-widgets-are-available" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Which widgets are available
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1710,7 +1924,7 @@
 
 
   
-    <a href="https://github.com/lonnieezell/Bonfire2/edit/develop/docs/modules/customizing_the_dashboard.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/lonnieezell/Bonfire2/edit/develop/docs/modules/email.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1718,173 +1932,128 @@
   
 
 
-<h1 id="customizing-the-dashboard">Customizing the Dashboard</h1>
-<p>Every admin can arrange their own dashboard without changing anyone else's. Until they do, they see the
-<a href="#the-site-default">site default</a>. Other widgets are added from the widget library.</p>
-<h2 id="edit-mode">Edit mode</h2>
-<p>Click <strong>Customize</strong> to enter edit mode. Nothing is stored until you click <strong>Save layout</strong>; <strong>Cancel</strong> puts the
-dashboard back the way it was. Every change can be undone and redone with the arrows in the edit bar, or Ctrl+Z
-(⌘Z) and Shift+Ctrl+Z, and the message after a removal or deletion has its own <strong>Undo</strong>.</p>
-<p>In edit mode you can:</p>
-<ul>
-<li>drag a widget to reorder it, also into another section;</li>
-<li>change a widget's <a href="#widget-settings">settings</a> from its sliders button, when it has any;</li>
-<li>remove a widget with its trash button;</li>
-<li>reset to the site default with the clock button. Saving the site default as your layout forgets yours, so you
-  follow the site default again when a site admin changes it.</li>
-</ul>
-<h2 id="sections">Sections</h2>
-<p>A layout is a list of sections, each with an optional heading. From a section's ⋯ menu you can add a widget to it,
-move it up or down, insert a section below it, or delete it along with its widgets. Sections left without widgets
-are dropped on save, and a layout holds at most 20 sections.</p>
-<h2 id="sizes">Sizes</h2>
-<p>Size a widget from the tools above it, or drag its bottom-right corner. The sizes are ¼, ⅓, ½, ⅔ and Full width
-(3, 4, 6, 8 or 12 of 12 columns), within the range that widget allows. Quick Links is always full width.</p>
-<h2 id="widget-settings">Widget settings</h2>
-<p>A widget's sliders button opens its settings in the panel on the right, with the widget outlined on the dashboard.
-The settings are your own: they change that widget on your dashboard only. <strong>Apply</strong> keeps them as part of your
-edit, so undo, <strong>Cancel</strong> and <strong>Save layout</strong> cover them like any other change, and the widget shows <em>Changes apply on
-save</em> until you save. A widget you just added can be set up before you save, too.</p>
-<p>Until you change a setting, it uses the widget's default. Once you change it, yours is kept. <strong>Reset to defaults</strong>
-fills the panel with the widget's defaults again. Widgets without settings,
-such as Quick Links, have no sliders button.</p>
-<table>
-<thead>
-<tr>
-<th>Widget</th>
-<th>Settings</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Stat cards</td>
-<td>Show the "View Detail" link</td>
-</tr>
-<tr>
-<td>Line chart</td>
-<td>Show the title, Show the legend, Legend position, Enable animation, Line tension</td>
-</tr>
-<tr>
-<td>Bar, doughnut, pie and polar area charts</td>
-<td>Show the title, Show the legend, Legend position, Enable animation, Color scheme</td>
-</tr>
-<tr>
-<td>Log activity</td>
-<td>Days to show, Hide Debug entries</td>
-</tr>
-<tr>
-<td>Users by group</td>
-<td>Sort by most users first or by group name</td>
-</tr>
-<tr>
-<td>Newest users</td>
-<td>Users to show (1–10)</td>
-</tr>
-<tr>
-<td>Recent failed logins</td>
-<td>Attempts to show (1–20)</td>
-</tr>
-<tr>
-<td>Recently active</td>
-<td>Active within (5 minutes, 1 hour, 24 hours), Users to show (1–10)</td>
-</tr>
-<tr>
-<td>Action runs</td>
-<td>Runs to show (1–20), Days to show (1–30), Include completed runs</td>
-</tr>
-<tr>
-<td>Recent errors</td>
-<td>Entries to show (1–20), Show errors only or errors and warnings</td>
-</tr>
-<tr>
-<td>System health</td>
-<td>Warn when server load is above (0.5–100)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Save as site default</strong> carries each widget's settings into the site default.</p>
-<h2 id="the-widget-library">The widget library</h2>
-<p><strong>Add widget</strong> opens the library. It lists every widget available to you, grouped (Quick Links, Stats, Charts,
-Custom), and marks the ones already on your dashboard. Click <strong>Add</strong>, or drag one straight onto a section. An added
-widget shows a placeholder until you save.</p>
-<h2 id="keyboard-and-screen-readers">Keyboard and screen readers</h2>
-<p>Every edit also works from the keyboard. With a widget focused:</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Does</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Arrow keys</td>
-<td>Move it. Up and Down, and Left and Right past either end, move it to the section before or after.</td>
-</tr>
-<tr>
-<td>Shift + Left / Right</td>
-<td>Resize it.</td>
-</tr>
-<tr>
-<td>Delete</td>
-<td>Remove it.</td>
-</tr>
-</tbody>
-</table>
-<p>Screen readers hear each change announced.</p>
-<h2 id="the-site-default">The site default</h2>
-<p>Admins who have not saved their own layout see the site default. Out of the box it is the <code>$layout</code> property of the
-Dashboard config file (see <a href="../dashboard/#configuration">The Dashboard</a>).</p>
-<p>Admins with the <code>widgets.settings</code> permission get <strong>Save as site default</strong> in the edit bar. It stores the layout as
-shown as the site default, which every admin without their own layout then sees, and forgets the saver's own layout so
-they follow it too. Other admins who customized keep theirs. Widgets the saver may not see aren't in their editor, so
-they aren't in the saved default either.</p>
-<p><strong>Reset site default</strong>, next to it in the edit bar, forgets the stored site default, so it goes back to the configured
-<code>$layout</code>. It asks first. Admins' own layouts are kept.</p>
-<p>The dashboard picks the first of these that exists:</p>
+<h1 id="email-settings">Email Settings</h1>
+<p>The Email settings screen controls how your site sends email, such as password resets, email verification codes and
+two-factor login codes. Open <strong>Email</strong> under <strong>Settings</strong> in the sidebar. You need the <code>admin.settings</code> permission.</p>
+<p>Change what you need, then click <strong>Save Settings</strong>.</p>
+<h2 id="set-up-smtp">Set up SMTP</h2>
+<p>Most email providers, such as Mailgun, Postmark, Amazon SES or your web host, give you SMTP details to send through.</p>
 <ol>
-<li>the admin's own saved layout;</li>
-<li>the site default saved with <strong>Save as site default</strong>;</li>
-<li>the <code>$layout</code> of the Dashboard config file, or, when that is <code>null</code>, the plain cells of <code>$cells</code> in order.</li>
-</ol>
-<h2 id="which-widgets-are-available">Which widgets are available</h2>
-<p>A widget's permission decides who may use it. Admins who lack it don't see it in their library or on their dashboard, its
-data is never fetched for them, and it is dropped from any layout they save. The built-in widgets need:</p>
+<li>Under <strong>From</strong>, enter the name and address your emails come from. Use an address your provider lets you send
+   from.</li>
+<li>Under <strong>Delivery</strong>, choose <strong>SMTP</strong>.</li>
+<li>Enter the <strong>Host</strong>, <strong>Username</strong> and <strong>Password</strong> your provider gave you.</li>
+<li>
+<p>Choose the <strong>Port</strong> and <strong>Encryption</strong> your provider asks for. The usual pairs are:</p>
 <table>
 <thead>
 <tr>
-<th>Widget</th>
-<th>Permission</th>
+<th>Port</th>
+<th>Encryption</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Users by group, Newest users, Recently active, Users in Recycler</td>
-<td><code>users.list</code></td>
+<td>587</td>
+<td>TLS</td>
 </tr>
 <tr>
-<td>Recent failed logins</td>
-<td><code>users.view</code></td>
+<td>465</td>
+<td>SSL</td>
 </tr>
 <tr>
-<td>User Groups</td>
-<td><code>groups.settings</code></td>
-</tr>
-<tr>
-<td>Log activity, Recent errors</td>
-<td><code>logs.view</code></td>
-</tr>
-<tr>
-<td>System health</td>
-<td><code>admin.settings</code></td>
-</tr>
-<tr>
-<td>Quick Links, Action runs</td>
-<td>none</td>
+<td>25 or 2525</td>
+<td>None or TLS</td>
 </tr>
 </tbody>
 </table>
-<p>A widget that becomes available later shows up in the library of admins who have customized, never in their layout.</p>
+<p>If your provider uses another port, choose <strong>other</strong> and type it in.</p>
+</li>
+<li>
+<p>Click <strong>Save Settings</strong>.</p>
+</li>
+</ol>
+<p>To check the settings, send yourself an email from the site, for example with "forgot password" on the login page.</p>
+<h2 id="settings">Settings</h2>
+<h3 id="from">From</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>The sender name emails show, such as your site's name. Required, at least 2 characters.</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>The address emails are sent from. Required.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="delivery">Delivery</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Protocol</td>
+<td>How mail is sent: <strong>SMTP</strong> through a mail server, <strong>Mail</strong> through PHP's <code>mail()</code> function, or <strong>Sendmail</strong> through the server's sendmail program.</td>
+</tr>
+<tr>
+<td>Sendmail path</td>
+<td>Where the sendmail program is, such as <code>/usr/sbin/sendmail</code>. Shown for <strong>Sendmail</strong>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mail</strong> has no options of its own and only works on Linux servers that are set up to send mail.</p>
+<h3 id="smtp">SMTP</h3>
+<p>These are shown when <strong>Protocol</strong> is <strong>SMTP</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Host</td>
+<td>The mail server's address, such as <code>smtp.example.com</code>.</td>
+</tr>
+<tr>
+<td>Port</td>
+<td>The mail server's port: 25, 587, 465, 2525, or <strong>other</strong> to type your own.</td>
+</tr>
+<tr>
+<td>Username</td>
+<td>The login for the mail server.</td>
+</tr>
+<tr>
+<td>Password</td>
+<td>The password for the mail server. It's stored in the settings table as plain text.</td>
+</tr>
+<tr>
+<td>Encryption</td>
+<td><strong>None</strong>, <strong>TLS</strong> or <strong>SSL</strong>. Use what your provider asks for.</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td>How many seconds to wait for the mail server before giving up.</td>
+</tr>
+<tr>
+<td>Persistent connection</td>
+<td>Keeps the connection to the mail server open between emails. Helps when the site sends many emails at once.</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1920,7 +2089,7 @@ data is never fetched for them, and it is dropped from any layout they save. The
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../dashboard/" class="md-footer__link md-footer__link--prev" aria-label="Previous: The Dashboard">
+          <a href="../settings/" class="md-footer__link md-footer__link--prev" aria-label="Previous: General Settings">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1930,20 +2099,20 @@ data is never fetched for them, and it is dropped from any layout they save. The
                 Previous
               </span>
               <div class="md-ellipsis">
-                The Dashboard
+                General Settings
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../building_sites/" class="md-footer__link md-footer__link--next" aria-label="Next: Building Sites">
+          <a href="../tools/" class="md-footer__link md-footer__link--next" aria-label="Next: Tools">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Building Sites
+                Tools
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2004,10 +2173,6 @@ data is never fetched for them, and it is dropped from any layout they save. The
     
     
       <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
-      
-        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-      
-        <script src="../../assets/js/hljs.js"></script>
       
     
   </body>
